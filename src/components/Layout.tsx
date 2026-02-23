@@ -30,30 +30,32 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       >
         <div className="container flex items-center justify-between px-4" style={{ minHeight: 88 }}>
 
-          {/* Logo — transparent, drop-shadow only */}
+          {/* Logo — rounded background container */}
           <Link to="/" className="flex items-center shrink-0 py-2">
-            <img
-              src="/images/logo.png"
-              alt="E-WOMAN 2026 Logo"
+            <div
               style={{
-                height: 80,
-                width: "auto",
-                objectFit: "contain",
-                display: "block",
-                filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.35))",
+                background: "#ffffff",
+                borderRadius: 12,
+                padding: "10px 16px",
+                boxShadow: "0 4px 16px rgba(0,0,0,0.18)",
+                display: "flex",
+                alignItems: "center",
               }}
-              onError={(e: SyntheticEvent<HTMLImageElement>) => {
-                e.currentTarget.style.display = "none";
-                const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                if (fallback) fallback.style.display = "block";
-              }}
-            />
-            <span
-              className="hidden font-display text-xl font-bold tracking-wider text-white"
-              style={{ textShadow: "0 2px 6px rgba(0,0,0,0.4)" }}
             >
-              E-WOMAN 2026
-            </span>
+              <img
+                src="/images/logo.png"
+                alt="E-WOMAN 2026 Logo"
+                style={{ height: 72, width: "auto", objectFit: "contain", display: "block" }}
+                onError={(e: SyntheticEvent<HTMLImageElement>) => {
+                  e.currentTarget.style.display = "none";
+                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                  if (fallback) fallback.style.display = "block";
+                }}
+              />
+              <span className="hidden font-display text-xl font-bold tracking-wider text-[#d4198a]">
+                E-WOMAN 2026
+              </span>
+            </div>
           </Link>
 
           {/* Desktop nav */}
@@ -133,7 +135,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 src="/images/logo.png"
                 alt="E-WOMAN 2026 Logo"
                 style={{ height: 120, width: "auto", objectFit: "contain" }}
-                className="brightness-0 invert"
                 onError={(e: SyntheticEvent<HTMLImageElement>) => {
                   e.currentTarget.style.display = "none";
                   const fallback = e.currentTarget.nextElementSibling as HTMLElement;

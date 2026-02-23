@@ -58,11 +58,11 @@ const Media = () => {
           <p className="text-xs uppercase tracking-[0.25em] mb-3" style={{ color: "#e0c55d" }}>
             Short Description
           </p>
-          <h2 className="font-display text-2xl font-bold mb-4" style={{ color: "#d4198a" }}>
+          <h2 className="font-display text-2xl font-bold mb-4" style={{ color: "#f8e8f4" }}>
             About E-Woman Conference
           </h2>
           <div className="gold-divider mx-0 mb-6" style={{ margin: 0 }} />
-          <p className="text-foreground/80 text-lg leading-relaxed">
+          <p className="text-white/85 text-lg leading-relaxed">
             E-Woman Conference is a Spirit-led women's leadership platform rooted in Pentecostal
             conviction and biblical truth. It equips women to rise in identity, spiritual authority,
             resilience, and kingdom influence.
@@ -74,11 +74,11 @@ const Media = () => {
           <p className="text-xs uppercase tracking-[0.25em] mb-3" style={{ color: "#e0c55d" }}>
             Full Description
           </p>
-          <h2 className="font-display text-2xl font-bold mb-4 text-white">
+          <h2 className="font-display text-2xl font-bold mb-4" style={{ color: "#f8e8f4" }}>
             The Full Story
           </h2>
           <div className="gold-divider mx-0 mb-6" style={{ margin: 0 }} />
-          <div className="space-y-4 text-foreground/75 leading-relaxed text-base">
+          <div className="space-y-4 text-white/80 leading-relaxed text-base">
             <p>
               Through authorship, mentorship, and transformational dialogue, E-Woman calls women to
               align with divine purpose and lead with clarity and excellence. Founded by Pst. Delphine

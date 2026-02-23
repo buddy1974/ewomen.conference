@@ -4,64 +4,64 @@ export const books = [
   {
     slug: "the-resilience-code",
     title: "The Resilience Code",
-    author: "Pst. Delphine Nforgwei",
+    author: "E-Woman Guest Author",
     image: "/images/writers/book-1.jpg",
     description:
-      "A transformational guide for women navigating the fires of adversity. The Resilience Code reveals the divine blueprint hidden in every hardship — equipping women to rise not just despite their trials, but because of them. A must-read for every woman who has ever questioned her strength.",
+      "What happens when adversity becomes your classroom? The Resilience Code decodes the hidden architecture of breakthrough — revealing how women of faith can turn every setback into a stepping stone toward their God-given destiny. This book equips readers with practical and spiritual tools to navigate life's most brutal seasons without losing their identity, their peace, or their purpose.",
   },
   {
     slug: "conflict-management-and-resolution-in-marriage",
     title: "Conflict Management and Resolution in Marriage",
-    author: "Pst. Delphine Nforgwei",
+    author: "E-Woman Guest Author",
     image: "/images/writers/book-2.jpg",
     description:
-      "With biblical wisdom and practical insight, this book equips couples to transform conflict into covenant. Discover how to communicate with grace, resolve differences with dignity, and build a marriage that reflects the glory of God.",
+      "Every marriage will face moments of tension — the question is not whether conflict comes, but whether you have the tools to transform it. This book draws from biblical wisdom and real-world insight to equip couples with practical strategies for navigating disagreement, rebuilding trust, and creating a home where love and grace consistently win.",
   },
   {
     slug: "a-girl-without-tears",
     title: "A Girl Without Tears",
-    author: "Pst. Delphine Nforgwei",
+    author: "E-Woman Guest Author",
     image: "/images/writers/book-3.jpg",
     description:
-      "An intimate and courageous journey through pain, silence, and spiritual restoration. This book speaks directly to the woman who has learned to hide her wounds — and invites her into a space of healing, identity, and divine tenderness.",
+      "She learned not to cry. She built walls so high that even she couldn't see over them. A Girl Without Tears is a courageous exploration of emotional suppression, inherited pain, and the journey toward wholeness. Written for the woman who has survived by going numb — this book is a call back to feeling, to healing, and to the full expression of who God created her to be.",
   },
   {
     slug: "the-absent-father",
     title: "The Absent Father",
-    author: "Pst. Delphine Nforgwei",
+    author: "E-Woman Guest Author",
     image: "/images/writers/book4.jpg",
     description:
-      "An honest reckoning with one of the most underaddressed wounds in a woman's life. The Absent Father explores how fatherlessness shapes identity — and how the love of a Heavenly Father is more than enough to make any woman whole.",
+      "The absence of a father leaves a wound that shapes a woman's sense of worth, her expectations in relationships, and her posture before God. The Absent Father confronts this wound with honesty and compassion — walking readers through the grief of what was missing, the danger of searching for love in wrong places, and the transformative discovery of a Heavenly Father who has never left.",
   },
   {
     slug: "a-single-girls-crowns",
     title: "A Single Girl's Crowns",
-    author: "Pst. Delphine Nforgwei",
+    author: "E-Woman Guest Author",
     image: "/images/writers/book5.jpg",
     description:
-      "Singleness is not a waiting room — it is a throne room. This empowering declaration calls single women to walk in dignity, purpose, and spiritual authority: fully alive and fully crowned before any relationship begins.",
+      "Before the ring. Before the title. Before anyone else calls her chosen — she is already crowned. A Single Girl's Crowns is a declaration of identity, purpose, and divine worth for the woman in the season of singleness. It dismantles the lie that she is in a waiting room and reveals the truth: she is already on the throne.",
   },
   {
     slug: "call-me-mara",
     title: "Call Me Mara",
-    author: "Pst. Delphine Nforgwei",
+    author: "E-Woman Guest Author",
     image: "/images/writers/book6.jpg",
     description:
-      "Named after the woman in the book of Ruth who said 'call me bitter,' this book is for every woman at her breaking point. It is a story of grief, surrender, and the miraculous way God restores what bitterness tried to take.",
+      "When life leaves you empty, grief has a name. Named after Naomi's declaration in the book of Ruth — 'Call me Mara, for the Almighty has dealt very bitterly with me' — this book is written for every woman standing at the intersection of loss and surrender. It is a story of bitterness transformed by encounter, and of how God restores what life tries to permanently take away.",
   },
   {
     slug: "the-riches-of-his-grace",
     title: "The Riches of His Grace",
-    author: "Pst. Delphine Nforgwei",
+    author: "E-Woman Guest Author",
     image: "/images/writers/book7.jpg",
     description:
-      "An exploration of divine abundance that transcends wealth, position, and circumstance. The Riches of His Grace invites women to discover what it means to live fully resourced — spiritually, emotionally, and in kingdom purpose.",
+      "Grace is not just unmerited favour — it is the inexhaustible wealth of heaven made available to every believing woman. The Riches of His Grace is a devotional and theological journey into Ephesians 1 and beyond, unpacking the lavish, boundless, and transformational nature of God's grace. Written for the woman who has tried hard enough and is ready to let God be enough.",
   },
 ];
 
 const AuthorsSection = () => {
   return (
-    <section className="py-24 bg-background">
+    <section id="authors" className="py-24 bg-background">
       <div className="container px-4">
 
         {/* Header */}

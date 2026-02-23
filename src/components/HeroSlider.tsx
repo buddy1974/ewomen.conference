@@ -74,19 +74,29 @@ export default function HeroSlider() {
       {/* ── Centred static content ──────────────────────────────────────────── */}
       <div className="relative z-10 container text-center px-4 pt-28 md:pt-36 pb-24">
 
-        {/* Animated Logo */}
+        {/* Animated Logo — rounded background container */}
         <div className="mb-8 flex justify-center">
           <div
             className="hero-logo-anim"
-            style={{
-              filter: "drop-shadow(0 0 32px rgba(255,51,170,0.55))",
-            }}
+            style={{ filter: "drop-shadow(0 0 40px rgba(255,51,170,0.45))" }}
           >
-            <img
-              src="/images/logo.png"
-              alt="E-WOMAN 2026"
-              style={{ height: 160, width: "auto", objectFit: "contain" }}
-            />
+            <div
+              style={{
+                background: "#ffffff",
+                borderRadius: 18,
+                padding: "16px 24px",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.28)",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img
+                src="/images/logo.png"
+                alt="E-WOMAN 2026"
+                style={{ height: 140, width: "auto", objectFit: "contain" }}
+              />
+            </div>
           </div>
         </div>
 

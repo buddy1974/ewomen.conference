@@ -31,12 +31,11 @@ const AuthorDetail = () => {
   return (
     <div className="min-h-screen bg-background">
 
-      {/* Hero — book cover full-width backdrop */}
+      {/* Hero — book cover blurred backdrop */}
       <section
         className="relative py-28 md:py-36 flex items-end overflow-hidden"
         style={{ minHeight: 480 }}
       >
-        {/* Blurred background */}
         <div
           className="absolute inset-0 bg-cover bg-center scale-110"
           style={{ backgroundImage: `url('${book.image}')`, filter: "blur(18px) brightness(0.35)" }}
@@ -71,26 +70,28 @@ const AuthorDetail = () => {
                 {book.title}
               </h1>
               <div className="gold-divider mx-0" style={{ margin: 0 }} />
-              <p className="text-white/70 text-base font-medium">{book.author}</p>
+              <p className="text-white/60 text-sm font-medium italic">
+                Featured at E-WOMAN Conference 2026
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Description */}
+      {/* Body */}
       <section className="py-16">
         <div className="container px-4 max-w-3xl">
 
           {/* Back link */}
           <Link
-            to="/#authors"
+            to="/"
             className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition mb-10"
           >
             <ArrowLeft size={15} /> Back to Authors
           </Link>
 
-          {/* Body */}
-          <div className="space-y-6">
+          {/* About the Book */}
+          <div className="space-y-5 mb-14">
             <h2 className="font-display text-2xl font-bold" style={{ color: "#d4198a" }}>
               About This Book
             </h2>
@@ -98,31 +99,33 @@ const AuthorDetail = () => {
             <p className="text-foreground/80 text-lg leading-relaxed">
               {book.description}
             </p>
-            <p className="text-foreground/60 leading-relaxed">
-              This book is part of a growing library of Spirit-led literature authored by voices within the
-              E-Woman movement — women who have not only survived their stories, but transformed them into
-              tools of liberation for others.
+            <p className="text-foreground/55 leading-relaxed">
+              This book is part of the growing E-Woman library — a curated collection of Spirit-led
+              literature by women who have not only survived their stories, but transformed them into
+              tools of liberation, identity, and kingdom advancement for others.
             </p>
           </div>
 
-          {/* Author block */}
+          {/* About the Author */}
           <div
-            className="mt-12 rounded-2xl p-6 border border-[#d4198a]/20"
+            className="rounded-2xl p-6 mb-14 border border-[#d4198a]/20"
             style={{ background: "linear-gradient(135deg, rgba(212,25,138,0.06), rgba(224,197,93,0.04))" }}
           >
-            <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "#e0c55d" }}>Author</p>
-            <h3 className="font-display text-xl font-bold text-white mb-1">{book.author}</h3>
+            <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "#e0c55d" }}>About the Author</p>
             <p className="text-foreground/60 text-sm leading-relaxed">
-              Pastor, Purpose Coach, Author &amp; Women's Impact Leader. Founder of the E-Woman Conference.
-              Passionate about helping women discover, embrace, and boldly walk in their God-ordained purpose.
+              This book is authored by one of the distinguished guest speakers and authors
+              featured at E-WOMAN 2026 — women of spiritual depth, personal conviction, and
+              transformational impact. Their stories and writings have shaped communities across
+              Africa and beyond.
+            </p>
+            <p className="text-foreground/50 text-xs mt-3 italic">
+              Full author details available at the conference.
             </p>
           </div>
 
           {/* WhatsApp CTA */}
-          <div className="mt-12 text-center space-y-4">
-            <p className="text-foreground/50 text-sm">
-              Want to learn more or enquire about this book?
-            </p>
+          <div className="text-center space-y-3 mb-12">
+            <p className="text-foreground/50 text-sm">Want to enquire about this book?</p>
             <a
               href={waUrl}
               target="_blank"
@@ -137,7 +140,7 @@ const AuthorDetail = () => {
           </div>
 
           {/* Back CTA */}
-          <div className="mt-12 pt-8 border-t border-white/10">
+          <div className="pt-8 border-t border-white/10">
             <Link
               to="/"
               className="inline-flex items-center gap-2 btn-gold-gradient px-7 py-3 rounded-full font-semibold text-sm shadow-lg hover:opacity-90 transition"
