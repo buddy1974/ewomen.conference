@@ -1,58 +1,114 @@
-import { Download, Mail, Phone, FileText } from "lucide-react";
-import { useContent } from "@/contexts/ContentContext";
+import { Mail, Phone, MessageCircle } from "lucide-react";
 
-const fileIcons: Record<string, React.ReactNode> = {
-  PDF: <FileText size={20} />,
-  ZIP: <FileText size={20} />,
-};
+const WA_NUMBER = "237683493220";
+const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hello, I am a media professional interested in E-WOMAN 2026")}`;
 
 const Press = () => {
-  const { content } = useContent();
-  const c = content!;
-
   return (
-    <div>
+    <div className="min-h-screen bg-background">
+
+      {/* Header */}
       <section className="py-20 gradient-dark">
         <div className="container px-4 text-center">
-          <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4">{c.press.title}</h1>
-          <p className="text-foreground/70 max-w-2xl mx-auto">{c.press.description}</p>
+          <p className="text-xs uppercase tracking-[0.25em] mb-3" style={{ color: "#e0c55d" }}>
+            Press &amp; Media
+          </p>
+          <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
+            Press Kit
+          </h1>
+          <div className="gold-divider mb-5" />
+          <p className="text-white/70 max-w-2xl mx-auto leading-relaxed">
+            Resources for media professionals covering E-WOMAN 2026 — The Excelling Woman.
+          </p>
         </div>
       </section>
 
       <section className="py-16">
         <div className="container px-4 max-w-3xl">
-          <h2 className="font-display text-2xl font-bold mb-6">Downloadable Documents</h2>
-          <div className="space-y-3">
-            {c.press.documents.map((doc: any, i: number) => (
-              <a
-                key={i}
-                href={doc.url}
-                className="glass-card p-5 flex items-center gap-4 hover:bg-white/15 transition group"
-              >
-                <div className="p-2 glass-card rounded-lg">
-                  {fileIcons[doc.type] || <FileText size={20} />}
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-sm">{doc.name}</h3>
-                  <p className="text-xs text-foreground/50">{doc.type} · {doc.size}</p>
-                </div>
-                <Download size={18} className="text-foreground/40 group-hover:text-accent transition" />
-              </a>
-            ))}
-          </div>
 
-          <div className="glass-card-strong p-8 mt-12">
-            <h2 className="font-display text-2xl font-bold mb-4">Media Contact</h2>
-            <p className="text-foreground/60 mb-4">{c.press.contact.name}</p>
-            <div className="flex flex-col gap-3">
-              <a href={`mailto:${c.press.contact.email}`} className="inline-flex items-center gap-2 text-accent hover:underline text-sm">
-                <Mail size={16} /> {c.press.contact.email}
-              </a>
-              <a href={`tel:${c.press.contact.phone}`} className="inline-flex items-center gap-2 text-accent hover:underline text-sm">
-                <Phone size={16} /> {c.press.contact.phone}
-              </a>
+          {/* Downloadable Documents */}
+          <div className="mb-14">
+            <h2 className="font-display text-2xl font-bold text-white mb-2">Downloadable Documents</h2>
+            <div className="gold-divider mx-0 mb-6" style={{ margin: 0 }} />
+            <div
+              className="rounded-2xl p-8 text-center border border-[#e0c55d]/20"
+              style={{ background: "linear-gradient(135deg, rgba(224,197,93,0.05), rgba(168,126,2,0.03))" }}
+            >
+              <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "#e0c55d" }}>
+                Coming Soon
+              </p>
+              <p className="text-foreground/60 leading-relaxed">
+                Official press materials coming soon. Media kits, speaker bios, and brand assets will
+                be available here before March 2026.
+              </p>
             </div>
           </div>
+
+          {/* Media Contact */}
+          <div
+            className="rounded-2xl overflow-hidden"
+            style={{ background: "linear-gradient(135deg, #1f0414, #2d0a1f)" }}
+          >
+            <div
+              className="px-6 py-4"
+              style={{ background: "linear-gradient(90deg, #d4198a, #c0157c)" }}
+            >
+              <h2 className="font-display text-xl font-bold text-white">Media Contact</h2>
+            </div>
+            <div className="p-8 space-y-5">
+              <p className="text-white/80 font-medium">E-WOMAN Media Team</p>
+              <div className="space-y-4">
+                <a
+                  href={WA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-white hover:text-[#ff33aa] transition group"
+                >
+                  <div
+                    className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: "linear-gradient(135deg, #e0c55d, #a87e02)" }}
+                  >
+                    <MessageCircle size={18} className="text-black" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/40 mb-0.5">WhatsApp</p>
+                    <p className="font-semibold text-sm text-white">+237 6 83 49 32 20</p>
+                  </div>
+                </a>
+                <a
+                  href="mailto:info@e-womanconference.online"
+                  className="flex items-center gap-3 text-white hover:text-[#ff33aa] transition group"
+                >
+                  <div
+                    className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: "linear-gradient(135deg, #e0c55d, #a87e02)" }}
+                  >
+                    <Mail size={18} className="text-black" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/40 mb-0.5">Email</p>
+                    <p className="font-semibold text-sm text-white">info@e-womanconference.online</p>
+                  </div>
+                </a>
+                <a
+                  href="tel:+237683493220"
+                  className="flex items-center gap-3 text-white hover:text-[#ff33aa] transition group"
+                >
+                  <div
+                    className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: "linear-gradient(135deg, #e0c55d, #a87e02)" }}
+                  >
+                    <Phone size={18} className="text-black" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/40 mb-0.5">Phone</p>
+                    <p className="font-semibold text-sm text-white">+237 6 83 49 32 20</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
     </div>

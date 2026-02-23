@@ -12,6 +12,8 @@ import Gallery from "./pages/Gallery";
 import Schedule from "./pages/Schedule";
 import Press from "./pages/Press";
 import Register from "./pages/Register";
+import AuthorDetail from "./pages/AuthorDetail";
+import Media from "./pages/Media";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +33,8 @@ const App = () => (
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/schedule" element={<Schedule />} />
               <Route path="/press" element={<Press />} />
+              <Route path="/media" element={<Media />} />
+              <Route path="/authors/:slug" element={<AuthorDetail />} />
               <Route path="/register" element={<Register />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

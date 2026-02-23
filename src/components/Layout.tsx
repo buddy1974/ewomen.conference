@@ -8,11 +8,10 @@ const navLinks = [
   { label: "Speakers", href: "/speakers" },
   { label: "Schedule", href: "/schedule" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Press", href: "/press" },
+  { label: "Media", href: "/media" },
   { label: "Register", href: "/register" },
 ];
 
-// Canonical WhatsApp number for all E-Woman contact
 const WA_NUMBER = "237683493220";
 const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hello, I want to register for E-WOMAN 2026")}`;
 
@@ -31,23 +30,30 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       >
         <div className="container flex items-center justify-between px-4" style={{ minHeight: 88 }}>
 
-          {/* Logo — white backing container per spec */}
+          {/* Logo — transparent, drop-shadow only */}
           <Link to="/" className="flex items-center shrink-0 py-2">
-            <div style={{ background: "#ffffff", borderRadius: 12, padding: "12px 18px", boxShadow: "0 4px 16px rgba(0,0,0,0.18)", display: "flex", alignItems: "center" }}>
-              <img
-                src="/images/logo.png"
-                alt="E-WOMAN 2026 Logo"
-                style={{ height: 80, width: "auto", objectFit: "contain", display: "block" }}
-                onError={(e: SyntheticEvent<HTMLImageElement>) => {
-                  e.currentTarget.style.display = "none";
-                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                  if (fallback) fallback.style.display = "block";
-                }}
-              />
-              <span className="hidden font-display text-xl font-bold tracking-wider text-[#d4198a]">
-                E-WOMAN 2026
-              </span>
-            </div>
+            <img
+              src="/images/logo.png"
+              alt="E-WOMAN 2026 Logo"
+              style={{
+                height: 80,
+                width: "auto",
+                objectFit: "contain",
+                display: "block",
+                filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.35))",
+              }}
+              onError={(e: SyntheticEvent<HTMLImageElement>) => {
+                e.currentTarget.style.display = "none";
+                const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                if (fallback) fallback.style.display = "block";
+              }}
+            />
+            <span
+              className="hidden font-display text-xl font-bold tracking-wider text-white"
+              style={{ textShadow: "0 2px 6px rgba(0,0,0,0.4)" }}
+            >
+              E-WOMAN 2026
+            </span>
           </Link>
 
           {/* Desktop nav */}
@@ -138,8 +144,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 E-WOMAN 2026
               </span>
               <p className="text-foreground/60 text-sm leading-relaxed">
-                Empowering women to rise boldly in purpose, leadership and faith.
-                A gathering where vision meets action.
+                A Spirit-led platform equipping women to rise in identity, spiritual authority, and kingdom influence.
               </p>
               <p className="text-sm font-semibold" style={{ color: "#e0c55d" }}>
                 Empower • Elevate • Excel
@@ -149,7 +154,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             {/* Navigation Column */}
             <div>
               <h4 className="font-display text-xs uppercase tracking-widest text-foreground/40 mb-4">
-                Navigation
+                Navigate
               </h4>
               <ul className="space-y-3">
                 {[
@@ -157,6 +162,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   { label: "Speakers", href: "/speakers" },
                   { label: "Schedule", href: "/schedule" },
                   { label: "Gallery", href: "/gallery" },
+                  { label: "Media", href: "/media" },
                   { label: "Register", href: "/register" },
                 ].map((link) => (
                   <li key={link.href}>
