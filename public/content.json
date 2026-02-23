@@ -1,0 +1,240 @@
+{
+  "site": {
+    "name": "E-WOMAN CONFERENCE 2026",
+    "tagline": "Empower • Elevate • Excel",
+    "theme": "The Excelling Woman",
+    "date": "2026-03-13T08:00:00",
+    "dateDisplay": "March 13–14, 2026",
+    "venue": "Hilton Hotel",
+    "location": "Yaoundé, Cameroon",
+    "registrationFee": "50,000 FCFA",
+    "registrationLink": "/register",
+    "whatsapp": "+237697317737"
+  },
+
+  "hero": {
+    "title": "Celebrating the Elevated Woman",
+    "subtitle": "When women gather, impact must be felt.",
+    "cta": "Register Now",
+    "ctaSecondary": "Meet the Speakers"
+  },
+
+  "convener": {
+    "name": "Pst. Delphine Nforgwei",
+    "title": "Pastor, Purpose Coach, Author & Women's Impact Leader",
+    "bio": "Founder of the E-Woman Conference. Passionate about helping women discover, embrace and boldly walk in their God-ordained purpose.",
+    "mission": "Helping women redefine empowerment and rise into their full calling, one woman at a time.",
+    "image": "/images/convener/delphine.jpg"
+  },
+
+  "about": {
+    "title": "Why E-WOMAN?",
+    "description": "A gathering designed to inspire, equip, and connect women who are ready to walk boldly in their purpose and calling.",
+    "highlights": [
+      { "number": "500+", "label": "Women Expected" },
+      { "number": "12+", "label": "Speakers" },
+      { "number": "2", "label": "Days" },
+      { "number": "1", "label": "Mission" }
+    ]
+  },
+
+  "speakers": [
+    {
+      "slug": "moderators",
+      "name": "Pst. Delphine Nforgwei & Comfort Mussa",
+      "title": "Conference Moderators",
+      "topic": "Guiding the Conversation with Clarity & Impact",
+      "bio": "Pst. Delphine Nforgwei, founder of the E-Woman Conference, and Comfort Mussa, award-winning journalist and founder of Sisterspeak237, bring wisdom, leadership and powerful storytelling to anchor E-WOMAN 2026.",
+      "image": "/images/speakers/moderators.jpeg",
+      "social": {
+        "website": "https://delphine-nforgwei.com/",
+        "instagram": "https://www.instagram.com/delphine.nforgwei",
+        "facebook": "https://www.facebook.com/profile.php?id=100069101528488"
+      }
+    },
+    {
+      "slug": "almighty-nchafack",
+      "name": "Dr. Almighty Nchafack",
+      "title": "Founder, Just Food",
+      "topic": "She Owns the Shelf: The Supermarket Blueprint for Cameroon",
+      "bio": "Founder of Just Food and impact strategist helping scale African products into mainstream markets.",
+      "image": "/images/speakers/speaker-5.jpg",
+      "social": {}
+    },
+    {
+      "slug": "eden-onwuka",
+      "name": "Dr. Eden A. Onwuka",
+      "title": "Master Speaker & Communications Trainer",
+      "topic": "Day 1: Healing the Soul Wounds | Day 2: Ignite Your Voice (Authority, Audacity & Authenticity)",
+      "bio": "Bestselling author and global keynote speaker helping leaders communicate with clarity and impact across five continents.",
+      "image": "/images/speakers/speaker-6.jpg",
+      "social": {}
+    },
+    {
+      "slug": "triumph-adekunle",
+      "name": "Triumph Adekunle",
+      "title": "Grace & Poise Coach",
+      "topic": "The Power of Presence (Projecting Grace and Confidence in Any Room)",
+      "bio": "Internationally regarded leadership strategist shaping confident and values-driven leaders.",
+      "image": "/images/speakers/speaker-7.jpg",
+      "social": {}
+    },
+    {
+      "slug": "solange-tumasang",
+      "name": "Dr. Solange Swiri Tumasang",
+      "title": "Leadership Coach & Humanitarian",
+      "topic": "Actionable Leadership Skills for Wealth Creation",
+      "bio": "Multi-award-winning women's rights advocate empowering women and girls across Africa.",
+      "image": "/images/speakers/speaker-8.jpg",
+      "social": {}
+    },
+    {
+      "slug": "prudentia-batchankwe",
+      "name": "Prudentia Batchankwe",
+      "title": "Certified John Maxwell Coach",
+      "topic": "Becoming a Woman of Impact: The Journey of Personal Transformation and Growth Necessary to Make a Meaningful Difference in the World",
+      "bio": "Dedicated educator and leadership coach passionate about youth empowerment and faith-based leadership.",
+      "image": "/images/speakers/speaker-9.jpg",
+      "social": {}
+    },
+    {
+      "slug": "eleanor-olatunde",
+      "name": "Rev. Eleanor Olatunde",
+      "title": "Founder, The Blazing Altar",
+      "topic": "Becoming Her: Walking Boldly in the Woman God Saw When He Made You",
+      "bio": "Strategic communications leader and global mentor empowering women to excel in leadership.",
+      "image": "/images/speakers/speaker-10.jpg",
+      "social": {}
+    },
+    {
+      "slug": "millicent-ugo-alozie",
+      "name": "Millicent Kangrotmwa Ugo-Alozie",
+      "title": "Author & Mentor",
+      "topic": "The Spirit of the Elevated Woman: Built in Fire, Not Comfort Zone",
+      "bio": "Founder of The Refined Woman Academy and mentor committed to growth and covenant relationships among women.",
+      "image": "/images/speakers/speaker-11.jpg",
+      "social": {}
+    },
+    {
+      "slug": "cece-fomenky",
+      "name": "Dr. Cece Fomenky",
+      "title": "Paediatric Endocrinologist & Leadership Coach",
+      "topic": "Modern Parenting with Mission & Emotional Intelligence",
+      "bio": "Medical leader and educator empowering families and women leaders.",
+      "image": "/images/speakers/speaker-12.jpg",
+      "social": {}
+    },
+    {
+      "slug": "gladys-viban",
+      "name": "Ma Yaah Gladys Viban",
+      "title": "Leadership Advocate",
+      "topic": "Heartprints to Footprints",
+      "bio": "Distinguished advocate empowering women and youth across Africa through values-based leadership.",
+      "image": "/images/speakers/speaker-13.jpg",
+      "social": {}
+    },
+    {
+      "slug": "ayeesha-omadibi",
+      "name": "AyeeSha Omadibi",
+      "title": "Founder, Hustle Africa",
+      "topic": "The Power of Your Story: How Women of Faith Can Lead Through Authenticity",
+      "bio": "Strategic storyteller and communication architect empowering women entrepreneurs to build influence in the digital age.",
+      "image": "/images/speakers/speaker-14.jpg",
+      "social": {}
+    }
+  ],
+
+  "testimonials": [
+    {
+      "name": "Attendee",
+      "role": "Yaoundé",
+      "text": "I walked in unsure of my direction. I left with clarity and the courage to move."
+    },
+    {
+      "name": "Participant",
+      "role": "Delaware",
+      "text": "For the first time, I felt seen — not just as a woman, but as a leader with purpose."
+    }
+  ],
+
+  "schedule": [
+    { "time": "08:00", "title": "Registration & Welcome", "description": "Check in and settle.", "type": "break" },
+    { "time": "09:00", "title": "Opening Session", "description": "Welcome address and worship.", "type": "ceremony" },
+    { "time": "11:00", "title": "Keynote Teaching", "description": "Main keynote session.", "type": "keynote" },
+    {
+      "time": "14:00",
+      "title": "Workshops & Breakouts",
+      "description": "Interactive breakout sessions.",
+      "type": "workshop"
+    },
+    { "time": "18:00", "title": "Evening Session", "description": "Closing worship and ministry.", "type": "ceremony" }
+  ],
+
+  "gallery": {
+    "categories": ["All", "Yaoundé 2025", "Delaware 2025"],
+    "images": [
+      { "src": "/images/gallery/yaounde-1.jpg", "alt": "Networking at E-WOMAN 2025", "category": "Yaoundé 2025" },
+      { "src": "/images/gallery/yaounde-2.jpg", "alt": "Selfie moment at E-WOMAN 2025", "category": "Yaoundé 2025" },
+      { "src": "/images/gallery/yaounde-3.jpg", "alt": "Speaker on stage at E-WOMAN 2025", "category": "Yaoundé 2025" },
+      { "src": "/images/gallery/yaounde-4.jpg", "alt": "Special guests at E-WOMAN 2025", "category": "Yaoundé 2025" },
+      { "src": "/images/gallery/yaounde-5.jpg", "alt": "Glamorous attendees at E-WOMAN 2025", "category": "Yaoundé 2025" },
+      { "src": "/images/gallery/yaounde-6.jpg", "alt": "Conference hall at Hilton Yaoundé", "category": "Yaoundé 2025" },
+      { "src": "/images/gallery/yaounde-7.jpg", "alt": "Elegant delegates at E-WOMAN 2025", "category": "Yaoundé 2025" },
+      { "src": "/images/gallery/yaounde-8.jpg", "alt": "Women leaders at E-WOMAN 2025", "category": "Yaoundé 2025" },
+      { "src": "/images/gallery/yaounde-9.jpg", "alt": "Worship moment at E-WOMAN 2025", "category": "Yaoundé 2025" },
+      { "src": "/images/gallery/yaounde-10.jpg", "alt": "Attendees posing at E-WOMAN 2025", "category": "Yaoundé 2025" },
+      { "src": "/images/gallery/delaware-1.jpg", "alt": "Group photo outdoors at Delaware 2025", "category": "Delaware 2025" },
+      { "src": "/images/gallery/delaware-2.jpg", "alt": "Elegant attendees at Delaware 2025", "category": "Delaware 2025" },
+      { "src": "/images/gallery/delaware-3.jpg", "alt": "Intimate conversation at Delaware 2025", "category": "Delaware 2025" },
+      { "src": "/images/gallery/delaware-4.jpg", "alt": "Speaker at the podium, Delaware 2025", "category": "Delaware 2025" },
+      { "src": "/images/gallery/delaware-5.jpg", "alt": "Keynote session at Delaware 2025", "category": "Delaware 2025" },
+      { "src": "/images/gallery/delaware-6.jpg", "alt": "Speaker on stage at Delaware 2025", "category": "Delaware 2025" },
+      { "src": "/images/gallery/delaware-7.jpg", "alt": "Hosts posing at Delaware venue", "category": "Delaware 2025" },
+      { "src": "/images/gallery/delaware-8.jpg", "alt": "Women leaders at Delaware 2025", "category": "Delaware 2025" },
+      { "src": "/images/gallery/delaware-9.jpg", "alt": "Stylish attendees at Delaware 2025", "category": "Delaware 2025" },
+      { "src": "/images/gallery/delaware-10.jpg", "alt": "Full group seated outdoors, Delaware 2025", "category": "Delaware 2025" }
+    ]
+  },
+
+  "registration": {
+    "title": "Register for E-WOMAN 2026",
+    "subtitle": "Secure your seat at the table of purpose.",
+    "fee": "50,000 FCFA",
+    "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLScLvl-TMRxcwM2ihlv6BivFF9TtL87QjjJTHgON6KPNQy6xBw/viewform",
+    "tiers": [
+      {
+        "name": "General",
+        "features": [
+          "Full conference access",
+          "Conference materials",
+          "Lunch & refreshments",
+          "Networking opportunities"
+        ]
+      }
+    ],
+    "paymentMethods": ["MTN MoMo: *126*4*926667*Amount#", "Orange Money: #150*47*890422*Amount#"],
+    "paymentNote": "After payment, send your screenshot via WhatsApp to confirm.",
+    "confirmationNumbers": ["+237697317737"]
+  },
+
+  "press": {
+    "title": "Press & Media",
+    "description": "Resources for media professionals covering E-WOMAN 2026.",
+    "documents": [],
+    "contact": {
+      "name": "E-WOMAN Media Team",
+      "email": "info@e-womanconference.online",
+      "phone": "+237697317737"
+    }
+  },
+
+  "footer": {
+    "tagline": "Empower • Elevate • Excel",
+    "links": [
+      { "label": "Home", "href": "/" },
+      { "label": "Speakers", "href": "/speakers" },
+      { "label": "Schedule", "href": "/schedule" },
+      { "label": "Register", "href": "/register" }
+    ]
+  }
+}

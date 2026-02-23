@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 326 91% 50%;
+    --foreground: 0 0% 100%;
+
+    --card: 329 91% 43%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 326 91% 47%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 326 91% 50%;
+
+    --secondary: 329 91% 43%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 326 85% 48%;
+    --muted-foreground: 336 30% 85%;
+
+    --accent: 336 99% 67%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 336 99% 70%;
+    --input: 326 91% 50%;
+    --ring: 0 0% 100%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 329 91% 43%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 326 91% 50%;
+    --sidebar-accent: 326 91% 50%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 336 99% 70%;
+    --sidebar-ring: 0 0% 100%;
+
+    /* Custom tokens */
+    --magenta: 326 91% 50%;
+    --magenta-dark: 329 91% 35%;
+    --magenta-light: 336 99% 67%;
+    --magenta-glow: 326 91% 48%;
+    --gold: 336 99% 67%;
+    --gold-foreground: 336 99% 25%;
+    --surface-glass: 326 85% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "kern" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+
+  a:not([class*="text-"]) {
+    @apply text-foreground transition-colors duration-200;
+  }
+
+  a:hover {
+    @apply text-foreground/80;
+  }
+
+  .gradient-dark a {
+    @apply text-white;
+  }
+
+  .gradient-dark a:hover {
+    @apply text-gray-300;
+  }
+
+  /* Force readable text in all form inputs */
+  input,
+  textarea,
+  select {
+    color: #111827; /* gray-900 */
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl;
+  }
+
+  .glass-card-strong {
+    @apply bg-white/15 backdrop-blur-lg border border-white/25 rounded-2xl;
+  }
+
+  .gradient-magenta {
+    background: linear-gradient(135deg, hsl(329, 91%, 35%), hsl(336, 99%, 67%));
+  }
+
+  .gradient-dark {
+    background: linear-gradient(180deg, hsl(329, 85%, 18%), hsl(329, 70%, 10%));
+  }
+
+  .gradient-hero {
+    background: linear-gradient(160deg, hsl(326, 91%, 40%), hsl(329, 85%, 25%) 50%, hsl(329, 70%, 15%));
+  }
+
+  .text-glow {
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+  }
+
+  .shadow-magenta {
+    box-shadow: 0 8px 32px -8px rgba(254, 85, 170, 0.5);
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 60px rgba(254, 85, 170, 0.2);
+  }
+
+  /* Hide WhatsApp button when footer is visible */
+  footer:hover ~ .fixed,
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.reveal-delay-1 { animation-delay: 0.1s; }
+.reveal-delay-2 { animation-delay: 0.2s; }
+.reveal-delay-3 { animation-delay: 0.3s; }
+.reveal-delay-4 { animation-delay: 0.4s; }
+
+.hero-logo-anim {
+  animation: logoEntrance 1s ease forwards;
+}
+
+.gold-divider {
+  width: 64px;
+  height: 3px;
+  background: linear-gradient(90deg, #e0c55d, #a87e02);
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+.btn-gold-gradient {
+  background: linear-gradient(135deg, #e0c55d, #a87e02);
+  color: #1a0a00;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.btn-gold-gradient:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}

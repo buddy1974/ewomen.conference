@@ -1,0 +1,36 @@
+name = "ewoman-registration-api"
+main = "index.ts"
+compatibility_date = "2024-01-01"
+workers_dev = true
+
+# R2 Bucket Binding
+[[r2_buckets]]
+binding = "PAYMENTS"
+bucket_name = "ewoman-registrations"
+preview_bucket_name = "ewoman-registrations-preview"
+
+# Environment Variables (set via CLI or dashboard)
+# DO NOT commit secrets to version control
+# Set these using: wrangler secret put VARIABLE_NAME
+
+# Example: wrangler secret put RESEND_API_KEY
+# Example: wrangler secret put TWILIO_ACCOUNT_SID
+
+# Non-secret variables (set in dashboard or here)
+[vars]
+SITE_ORIGIN = "https://www.e-womanconference.online"
+ADMIN_EMAIL = "admin@e-womanconference.online"
+FROM_EMAIL = "noreply@e-womanconference.online"
+WHATSAPP_TO = "whatsapp:+237697317737"
+ENABLE_WHATSAPP_NOTIFICATIONS = "true"
+
+# Required secrets (set via wrangler secret put):
+# RESEND_API_KEY
+# TWILIO_ACCOUNT_SID
+# TWILIO_AUTH_TOKEN
+# TWILIO_WHATSAPP_FROM (e.g., whatsapp:+14155238886)
+
+# Custom routes (uncomment after deploying)
+# routes = [
+#   { pattern = "api.e-womanconference.online/*", zone_name = "e-womanconference.online" }
+# ]
