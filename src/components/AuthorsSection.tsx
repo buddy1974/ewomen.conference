@@ -61,33 +61,77 @@ export const books = [
 
 const AuthorsSection = () => {
   return (
-    <section id="authors" className="py-24 bg-background">
+    <section id="authors" className="py-24 gradient-dark">
       <div className="container px-4">
 
         {/* Header */}
         <div className="text-center mb-14 reveal">
           <p className="text-xs uppercase tracking-[0.25em] mb-3" style={{ color: "#e0c55d" }}>
-            Words That Elevate
+            Elevation Turned Into Legacy
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            The E-Woman Authors
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
+            E-Woman Authors
           </h2>
           <div className="gold-divider mb-6" />
-          <p className="text-white max-w-2xl mx-auto text-base leading-relaxed font-medium">
-            E-Woman is more than a conference — it is a Spirit-led movement shaped by voices of depth,
-            conviction, and transformational insight. Our authors address identity, resilience, marriage,
-            generational restoration, and spiritual authority — equipping women to rise in clarity and
-            kingdom influence.
+          <p className="text-white/90 max-w-2xl mx-auto text-sm uppercase tracking-widest font-semibold mb-10">
+            Women who turned transformation into legacy.
           </p>
+
+          {/* Narrative introduction */}
+          <div className="max-w-3xl mx-auto text-left space-y-5 bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10">
+            <h3 className="font-display text-xl md:text-2xl font-bold text-white text-center">
+              Meet the Authors Who Turned Their Elevation into a Legacy
+            </h3>
+            <div className="w-16 h-0.5 mx-auto" style={{ background: "#e0c55d" }} />
+
+            <p className="text-white/90 text-base leading-relaxed font-semibold text-center italic">
+              We don't just talk about transformation.
+              <br />We track it.
+            </p>
+
+            <p className="text-white/80 text-base leading-relaxed">
+              Last year, something remarkable happened.
+            </p>
+
+            <p className="text-white/80 text-base leading-relaxed">
+              At the E-Woman Conference, Coach Dee didn't simply host an event — she ignited a movement.
+              Women walked into that conference seeking clarity, growth, and direction. They walked out with
+              more than inspiration. They left with a blueprint for their destinies.
+            </p>
+
+            <p className="text-white/80 text-base leading-relaxed">
+              These authors are part of that story.
+            </p>
+
+            <p className="text-white/80 text-base leading-relaxed">
+              They are living proof that when you invest in a woman's leadership, she doesn't just rise —
+              she builds a ladder for others to follow.
+            </p>
+
+            <p className="text-white/80 text-base leading-relaxed">
+              Each of these women took the principles shared through the 7 Pillars and turned them into
+              something tangible: their voices, their books, and their legacy.
+            </p>
+
+            <p className="text-white/80 text-base leading-relaxed">
+              They are a powerful reminder that the E-Woman experience doesn't end when the conference closes.
+              For many, that is where the real journey begins.
+            </p>
+
+            <p className="text-white font-semibold text-base leading-relaxed text-center">
+              Today we celebrate the authors who transformed elevation into legacy — women who took the
+              7 Pillars and began building empires that will impact generations.
+            </p>
+          </div>
         </div>
 
         {/* Book Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-7 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
           {books.map((book, i) => (
             <Link
               key={book.slug}
               to={`/authors/${book.slug}`}
-              className="reveal group relative overflow-hidden rounded-2xl shadow-lg bg-white/5 border border-white/10 hover:border-[#e0c55d]/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl block"
+              className="reveal group relative overflow-hidden rounded-2xl shadow-xl bg-white/5 border border-white/10 hover:border-[#e0c55d]/70 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(212,25,138,0.3)] block"
               style={{ animationDelay: `${i * 0.08}s` }}
             >
               {/* Book cover */}
@@ -99,12 +143,22 @@ const AuthorsSection = () => {
                 />
               </div>
 
-              {/* Hover overlay with gold button */}
-              <div className="absolute inset-0 flex flex-col items-center justify-end pb-5 px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
-                <p className="text-white text-xs font-semibold text-center mb-3 leading-tight line-clamp-2">
+              {/* Card footer — always visible */}
+              <div className="px-4 py-4 bg-white/5 border-t border-white/10">
+                <p className="text-white font-bold text-sm leading-snug mb-1 line-clamp-2">
                   {book.title}
                 </p>
-                <span className="btn-gold-gradient px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                <p className="text-white/60 text-xs">
+                  Her journey is a testimony of transformation after the E-Woman experience.
+                </p>
+              </div>
+
+              {/* Hover overlay with gold button */}
+              <div className="absolute inset-0 flex flex-col items-center justify-end pb-6 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/85 via-black/40 to-transparent">
+                <p className="text-white text-sm font-bold text-center mb-3 leading-tight line-clamp-2">
+                  {book.title}
+                </p>
+                <span className="btn-gold-gradient px-5 py-2 rounded-full text-xs font-bold shadow-lg">
                   Read More →
                 </span>
               </div>
