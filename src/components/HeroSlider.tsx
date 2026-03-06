@@ -12,6 +12,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Calendar, MapPin, Users } from "lucide-react";
 import CountdownTimer from "@/components/CountdownTimer";
 import { trackEvent } from "@/lib/analytics";
 
@@ -121,52 +122,89 @@ export default function HeroSlider() {
         </p>
 
         {/* Countdown Timer */}
-        <div className="mb-5">
+        <div className="mb-8">
           <p className="text-white text-xs uppercase tracking-widest mb-4 font-semibold">
             Event Starts In
           </p>
           <CountdownTimer targetDate="2026-03-13T00:00:00" />
         </div>
 
-        {/* Social proof */}
-        <p className="text-white text-sm mb-1 font-medium">
-          Over 500 women expected at Hilton Yaoundé
-        </p>
-        <p className="text-white font-semibold text-base mb-8" style={{ color: "#e0c55d" }}>
-          Conference Pass — 50,000 FCFA
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link
-            to="/register"
-            className="inline-flex items-center justify-center px-10 py-4 rounded-full font-semibold text-lg text-white shadow-lg"
+        {/* ── Floating Event Card ──────────────────────────────────────────── */}
+        <div
+          className="mx-auto w-full"
+          style={{ maxWidth: 420 }}
+        >
+          <div
             style={{
-              backgroundColor: "#ff33aa",
-              boxShadow: "0 4px 20px rgba(255,51,170,0.5)",
-              transition: "background-color 250ms ease, transform 200ms ease",
+              background: "#ffffff",
+              borderRadius: 20,
+              boxShadow: "0 32px 80px rgba(0,0,0,0.38), 0 8px 24px rgba(212,25,138,0.18)",
+              padding: "36px 36px 32px",
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#d4198a";
-              e.currentTarget.style.transform = "scale(1.05)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#ff33aa";
-              e.currentTarget.style.transform = "scale(1)";
-            }}
-            onClick={() => trackEvent("hero_cta_click")}
           >
-            Secure Your Seat
-          </Link>
-          <a
-            href={`https://wa.me/237683493220?text=${encodeURIComponent("Hello, I want to register for E-WOMAN 2026")}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-10 py-4 rounded-full font-semibold text-lg text-white border-2 border-white hover:bg-white/10 transition"
-            onClick={() => trackEvent("hero_whatsapp_click")}
-          >
-            WhatsApp Us
-          </a>
+            {/* Card title */}
+            <h2
+              className="font-display text-xl font-bold mb-1 text-center"
+              style={{ color: "#1a001f" }}
+            >
+              E-Woman Conference 2026
+            </h2>
+
+            {/* Gold rule */}
+            <div className="gold-divider mb-5" />
+
+            {/* Event details */}
+            <ul className="space-y-3 mb-5 text-left">
+              <li className="flex items-center gap-3">
+                <Calendar size={16} style={{ color: "#d4198a", flexShrink: 0 }} />
+                <span className="text-sm font-medium" style={{ color: "#4b5563" }}>
+                  March 13–14, 2026
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <MapPin size={16} style={{ color: "#d4198a", flexShrink: 0 }} />
+                <span className="text-sm font-medium" style={{ color: "#4b5563" }}>
+                  Hilton Hotel – Yaoundé
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Users size={16} style={{ color: "#d4198a", flexShrink: 0 }} />
+                <span className="text-sm font-semibold" style={{ color: "#d4198a" }}>
+                  500+ Women Expected
+                </span>
+              </li>
+            </ul>
+
+            {/* Price line */}
+            <p
+              className="text-center text-sm font-semibold mb-5"
+              style={{ color: "#6b7280" }}
+            >
+              Conference Pass —{" "}
+              <span style={{ color: "#1a001f", fontWeight: 700 }}>50,000 FCFA</span>
+            </p>
+
+            {/* CTA button */}
+            <Link
+              to="/register"
+              className="block w-full text-center py-4 rounded-full font-bold text-white text-base transition-all duration-200"
+              style={{
+                backgroundColor: "#d4198a",
+                boxShadow: "0 6px 24px rgba(212,25,138,0.40)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "#c0157c";
+                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-1px)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "#d4198a";
+                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+              }}
+              onClick={() => trackEvent("hero_cta_click")}
+            >
+              Secure Your Seat
+            </Link>
+          </div>
         </div>
       </div>
 
