@@ -1,19 +1,53 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Mic, BookOpen, Users, Sparkles, LayoutList, Package, Quote } from "lucide-react";
 import { useContent } from "@/contexts/ContentContext";
 
-import CountdownTimer from "@/components/CountdownTimer";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import HeroSlider from "@/components/HeroSlider";
 import AuthorsSection from "@/components/AuthorsSection";
 import VisionariesSection from "@/components/VisionariesSection";
 
+// ── What You Get items ────────────────────────────────────────────────────────
+const PASS_INCLUDES = [
+  { icon: <Mic size={22} />, text: "Powerful keynote teachings" },
+  { icon: <BookOpen size={22} />, text: "Leadership & purpose workshops" },
+  { icon: <Users size={22} />, text: "Networking with 500+ women" },
+  { icon: <Sparkles size={22} />, text: "Spiritual empowerment sessions" },
+  { icon: <LayoutList size={22} />, text: "Access to all conference sessions" },
+  { icon: <Package size={22} />, text: "Conference materials & resources" },
+];
+
+// ── Static testimonials ───────────────────────────────────────────────────────
+const TESTIMONIALS = [
+  { quote: "E-Woman helped me rediscover my purpose.", name: "Conference Attendee" },
+  { quote: "This gathering ignited something powerful in me.", name: "Participant" },
+  { quote: "A life-changing experience for women of faith.", name: "Community Leader" },
+];
+
 const Index = () => {
   const { content } = useContent();
   const c = content!;
 
+  // Scroll-triggered sticky Register button
+  const [showSticky, setShowSticky] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShowSticky(window.scrollY > 500);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div>
+
+      {/* ── URGENCY BANNER ──────────────────────────────────────────────────── */}
+      <div
+        className="text-center text-sm font-medium text-white"
+        style={{ background: "#1a001f", padding: "8px 16px" }}
+      >
+        Early Registration Now Open — Secure Your Seat Today
+      </div>
+
       {/* HERO — fullscreen fade slider */}
       <HeroSlider />
 
@@ -28,6 +62,44 @@ const Index = () => {
             <span>2 Continents</span>
             <span>Yaoundé • Delaware</span>
             <span>Life-Changing Testimonies</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT YOUR PASS INCLUDES ─────────────────────────────────────────── */}
+      <section className="py-20 bg-background">
+        <div className="container px-4">
+          <h2 className="reveal font-display text-3xl sm:text-4xl font-bold text-center text-white mb-3">
+            What Your Conference Pass Includes
+          </h2>
+          <p className="reveal reveal-delay-1 text-center text-white mb-12 max-w-xl mx-auto">
+            Your 50,000 FCFA ticket gives you full access to a transformational two-day experience.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+            {PASS_INCLUDES.map((item, i) => (
+              <div
+                key={i}
+                className="reveal flex items-start gap-4 rounded-2xl p-6 shadow-sm"
+                style={{ animationDelay: `${i * 0.08}s`, background: "#ffffff" }}
+              >
+                <div
+                  className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
+                  style={{ background: "linear-gradient(135deg, #d4198a, #ff33aa)", color: "#fff" }}
+                >
+                  {item.icon}
+                </div>
+                <p className="font-semibold pt-1.5" style={{ color: "#1a001f" }}>{item.text}</p>
+              </div>
+            ))}
+          </div>
+          <div className="reveal reveal-delay-3 text-center mt-10">
+            <Link
+              to="/register"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white text-base"
+              style={{ backgroundColor: "#d4198a", boxShadow: "0 6px 24px rgba(212,25,138,0.35)" }}
+            >
+              Secure Your Seat — 50,000 FCFA <ArrowRight size={18} />
+            </Link>
           </div>
         </div>
       </section>
@@ -85,7 +157,7 @@ const Index = () => {
                 className="reveal p-6 text-center rounded-2xl shadow-sm"
                 style={{ animationDelay: `${i * 0.1}s`, background: "rgba(255,255,255,0.95)" }}
               >
-                <div className="font-display text-3xl sm:text-4xl font-bold mb-2" style={{ color: "#d4198a" }}>
+                <div className="font-display text-3xl sm:text-4xl font-bold mb-2 stat-number" style={{ color: "#d4198a" }}>
                   {h.number}
                 </div>
                 <div className="text-sm font-semibold" style={{ color: "#1a001f" }}>{h.label}</div>
@@ -106,7 +178,7 @@ const Index = () => {
               <Link
                 key={speaker.slug}
                 to={`/speakers/${speaker.slug}`}
-                className="reveal overflow-hidden group transition-all block rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1"
+                className="reveal overflow-hidden group transition-all block rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 speaker-card"
                 style={{ animationDelay: `${index * 0.1}s`, background: "#ffffff" }}
               >
                 <div className="aspect-[4/3] overflow-hidden">
@@ -135,7 +207,36 @@ const Index = () => {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* ── VOICES FROM WOMEN IMPACTED ────────────────────────────────────────── */}
+      <section className="py-20 bg-background">
+        <div className="container px-4">
+          <h2 className="reveal font-display text-3xl sm:text-4xl font-bold text-center text-white mb-12">
+            Voices from Women Impacted
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {TESTIMONIALS.map((t, i) => (
+              <div
+                key={i}
+                className="reveal rounded-2xl p-8 shadow-sm"
+                style={{ animationDelay: `${i * 0.1}s`, background: "#ffffff" }}
+              >
+                <Quote size={28} style={{ color: "#d4198a", marginBottom: 16 }} />
+                <p
+                  className="font-display text-lg italic leading-relaxed mb-6"
+                  style={{ color: "#1a001f" }}
+                >
+                  "{t.quote}"
+                </p>
+                <p className="text-sm font-semibold" style={{ color: "#d4198a" }}>
+                  — {t.name}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EXISTING TESTIMONIAL SLIDER */}
       <section className="py-20">
         <div className="container px-4">
           <h2 className="reveal font-display text-3xl sm:text-4xl font-bold text-center mb-12">
@@ -170,7 +271,8 @@ const Index = () => {
           </p>
           <Link
             to="/register"
-            className="reveal reveal-delay-3 inline-flex items-center justify-center gap-2 bg-white !text-magenta px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:!text-magenta-dark transition-all duration-200 shadow-lg"
+            className="reveal reveal-delay-3 inline-flex items-center justify-center gap-2 bg-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg transition-all duration-200"
+            style={{ color: "#d4198a" }}
           >
             Register Now <ArrowRight size={18} />
           </Link>
@@ -181,11 +283,31 @@ const Index = () => {
       <div className="fixed bottom-0 left-0 right-0 md:hidden bg-black/90 backdrop-blur-md border-t border-white/10 p-4 z-50">
         <Link
           to="/register"
-          className="block w-full text-center bg-white !text-magenta py-3 rounded-full font-semibold text-lg hover:bg-white hover:!text-magenta-dark transition-all duration-200 shadow-lg"
+          className="block w-full text-center bg-white py-3 rounded-full font-semibold text-lg shadow-lg"
+          style={{ color: "#d4198a" }}
         >
           Secure Your Seat – 50,000 FCFA
         </Link>
       </div>
+
+      {/* ── SCROLL-TRIGGERED STICKY REGISTER (desktop) ──────────────────────── */}
+      {showSticky && (
+        <Link
+          to="/register"
+          className="hidden md:flex fixed items-center gap-2 text-white font-semibold text-sm z-50 transition-all duration-300"
+          style={{
+            bottom: 20,
+            right: 20,
+            backgroundColor: "#d4198a",
+            padding: "14px 20px",
+            borderRadius: 999,
+            boxShadow: "0 6px 24px rgba(0,0,0,0.25)",
+          }}
+        >
+          Register Now
+        </Link>
+      )}
+
     </div>
   );
 };

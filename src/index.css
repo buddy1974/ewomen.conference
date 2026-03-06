@@ -291,3 +291,36 @@
   opacity: 0.88;
   transform: translateY(-1px);
 }
+
+/* ── Section utility classes ──────────────────────────────────────────────── */
+:root {
+  --ew-dark:    #1a001f;
+  --ew-magenta: #d4198a;
+  --ew-gold:    #c9a227;
+  --ew-grey:    #4b5563;
+}
+
+.magenta-section p,
+.magenta-section span,
+.magenta-section li {
+  color: #1a001f;
+  font-weight: 500;
+}
+
+.magenta-section h2,
+.magenta-section h3 {
+  color: #1a001f;
+}
+
+.stat-number {
+  color: #1a001f;
+  font-weight: 700;
+}
+
+.speaker-card p {
+  color: #1a001f;
+}
+
+.schedule-card p {
+  color: #1a001f;
+}
