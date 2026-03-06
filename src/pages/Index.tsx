@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Mic, BookOpen, Users, Sparkles, LayoutList, Package, Quote } from "lucide-react";
+
+const BADGE_KEYWORDS = ["Author", "Pastor", "Apostle", "Coach", "Mentor", "Entrepreneur", "Speaker", "Minister", "Leader", "Prophet"];
+const getSpeakerBadge = (title: string): string => {
+  for (const kw of BADGE_KEYWORDS) {
+    if (title.toLowerCase().includes(kw.toLowerCase())) return kw;
+  }
+  return title.split(/[,&|•/]/)[0].trim().substring(0, 18);
+};
 import { useContent } from "@/contexts/ContentContext";
 
 import TestimonialSlider from "@/components/TestimonialSlider";
@@ -190,6 +198,12 @@ const Index = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="font-display text-xl font-bold mb-1" style={{ color: "#1a001f" }}>{speaker.name}</h3>
+                  <span
+                    className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-2"
+                    style={{ background: "rgba(212,25,138,0.10)", color: "#d4198a" }}
+                  >
+                    {getSpeakerBadge(speaker.title)}
+                  </span>
                   <p className="text-sm mb-2" style={{ color: "rgba(26,0,31,0.6)" }}>{speaker.title}</p>
                   <p className="text-sm font-medium" style={{ color: "#d4198a" }}>{speaker.topic}</p>
                 </div>

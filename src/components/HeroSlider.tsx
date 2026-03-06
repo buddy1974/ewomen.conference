@@ -128,6 +128,9 @@ export default function HeroSlider() {
             Event Starts In
           </p>
           <CountdownTimer targetDate="2026-03-13T00:00:00" />
+          <p className="text-white text-xs mt-3 font-medium">
+            Conference begins March 13, 2026
+          </p>
         </div>
 
         {/* ── Floating Event Card ──────────────────────────────────────────── */}
