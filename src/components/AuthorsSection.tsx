@@ -131,11 +131,19 @@ const AuthorsSection = () => {
             <Link
               key={book.slug}
               to={`/authors/${book.slug}`}
-              className="reveal group relative overflow-hidden rounded-2xl shadow-xl bg-white/5 border border-white/10 hover:border-[#e0c55d]/70 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(212,25,138,0.3)] block"
-              style={{ animationDelay: `${i * 0.08}s` }}
+              className="reveal group block transition-all duration-300 hover:-translate-y-2"
+              style={{
+                animationDelay: `${i * 0.08}s`,
+                background: "#ffffff",
+                borderRadius: 20,
+                padding: 24,
+                boxShadow: "0 4px 24px rgba(0,0,0,0.10)",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 16px 48px rgba(212,25,138,0.22)")}
+              onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 4px 24px rgba(0,0,0,0.10)")}
             >
               {/* Book cover */}
-              <div className="aspect-[3/4] overflow-hidden">
+              <div className="aspect-[3/4] overflow-hidden rounded-xl mb-5">
                 <img
                   src={book.image}
                   alt={book.title}
@@ -143,27 +151,54 @@ const AuthorsSection = () => {
                 />
               </div>
 
-              {/* Card footer — always visible */}
-              <div className="px-4 py-4 bg-white/5 border-t border-white/10">
-                <p className="text-white font-bold text-sm leading-snug mb-1 line-clamp-2">
-                  {book.title}
-                </p>
-                <p className="text-white/60 text-xs">
-                  Her journey is a testimony of transformation after the E-Woman experience.
-                </p>
-              </div>
+              {/* Author badge */}
+              <span
+                className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3"
+                style={{ background: "rgba(212,25,138,0.10)", color: "#d4198a" }}
+              >
+                E-Woman Author
+              </span>
 
-              {/* Hover overlay with gold button */}
-              <div className="absolute inset-0 flex flex-col items-center justify-end pb-6 px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/85 via-black/40 to-transparent">
-                <p className="text-white text-sm font-bold text-center mb-3 leading-tight line-clamp-2">
-                  {book.title}
-                </p>
-                <span className="btn-gold-gradient px-5 py-2 rounded-full text-xs font-bold shadow-lg">
-                  Read More →
-                </span>
-              </div>
+              {/* Book title */}
+              <h3
+                className="font-display text-base font-bold leading-snug mb-2 line-clamp-2"
+                style={{ color: "#1a001f" }}
+              >
+                {book.title}
+              </h3>
+
+              {/* Impact statement */}
+              <p className="text-xs leading-relaxed mb-4" style={{ color: "rgba(26,0,31,0.55)" }}>
+                A testimony of transformation inspired by the E-Woman movement.
+              </p>
+
+              {/* CTA link */}
+              <span
+                className="inline-flex items-center gap-1 text-xs font-bold transition-colors"
+                style={{ color: "#d4198a" }}
+              >
+                Discover the Book →
+              </span>
             </Link>
           ))}
+        </div>
+
+        {/* ── Section CTA ──────────────────────────────────────────────────── */}
+        <div className="reveal mt-16 text-center max-w-2xl mx-auto space-y-6">
+          <div className="w-16 h-0.5 mx-auto" style={{ background: "#e0c55d" }} />
+          <p className="text-white/90 text-base leading-relaxed">
+            These authors represent the living impact of the E-Woman movement.
+          </p>
+          <p className="text-white font-semibold text-base">
+            Join us at the E-Woman Conference and experience the transformation firsthand.
+          </p>
+          <Link
+            to="/register"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white text-base transition-transform hover:scale-105"
+            style={{ backgroundColor: "#d4198a", boxShadow: "0 8px 28px rgba(212,25,138,0.40)" }}
+          >
+            Register for the Conference
+          </Link>
         </div>
 
       </div>
