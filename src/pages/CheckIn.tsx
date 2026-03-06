@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { CheckCircle, XCircle, AlertTriangle, ScanLine, KeyboardIcon, RefreshCw } from "lucide-react";
+import { Link } from "react-router-dom";
+import { CheckCircle, XCircle, AlertTriangle, ScanLine, KeyboardIcon, RefreshCw, Lock } from "lucide-react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import {
   getCheckIns,
@@ -10,6 +11,31 @@ import {
   type CheckInRecord,
 } from "@/lib/checkin";
 
+// ── Access guard ─────────────────────────────────────────────────────────────
+const STAFF_KEY = "ewoman2026";
+
+const AccessRestricted = () => (
+  <div className="min-h-screen bg-gray-50 flex items-center justify-center p-8">
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-10 text-center max-w-sm w-full space-y-4">
+      <div className="flex justify-center mb-2">
+        <Lock size={36} style={{ color: "#d4198a" }} />
+      </div>
+      <h1 className="font-display text-2xl font-bold" style={{ color: "#1a001f" }}>
+        Access Restricted
+      </h1>
+      <p className="text-sm text-gray-500">Event Staff Only</p>
+      <Link
+        to="/"
+        className="inline-block mt-2 px-6 py-3 rounded-full text-white text-sm font-semibold"
+        style={{ backgroundColor: "#d4198a" }}
+      >
+        Return to Home
+      </Link>
+    </div>
+  </div>
+);
+
+// ── Scan status config ────────────────────────────────────────────────────────
 type Status = "idle" | "verified" | "not_found" | "duplicate";
 
 const STATUS_CONFIG: Record<Status, {
@@ -49,7 +75,13 @@ const STATUS_CONFIG: Record<Status, {
   },
 };
 
+// ── CheckIn page ─────────────────────────────────────────────────────────────
 const CheckIn = () => {
+  const params = new URLSearchParams(window.location.search);
+  const key = params.get("key");
+
+  if (key !== STAFF_KEY) return <AccessRestricted />;
+
   const [status, setStatus] = useState<Status>("idle");
   const [lastRef, setLastRef] = useState("");
   const [manual, setManual] = useState("");

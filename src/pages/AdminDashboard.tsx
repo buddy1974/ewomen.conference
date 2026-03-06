@@ -1,9 +1,53 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Users, Clock, AlertTriangle, RefreshCw, Trash2 } from "lucide-react";
+import { Users, Clock, AlertTriangle, RefreshCw, Trash2, Download, Lock } from "lucide-react";
 import { getCheckIns, clearCheckIns, type CheckInRecord } from "@/lib/checkin";
 
+// ── Access guard ─────────────────────────────────────────────────────────────
+const STAFF_KEY = "ewoman2026";
+
+const AccessRestricted = () => (
+  <div className="min-h-screen bg-gray-50 flex items-center justify-center p-8">
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-10 text-center max-w-sm w-full space-y-4">
+      <div className="flex justify-center mb-2">
+        <Lock size={36} style={{ color: "#d4198a" }} />
+      </div>
+      <h1 className="font-display text-2xl font-bold" style={{ color: "#1a001f" }}>
+        Access Restricted
+      </h1>
+      <p className="text-sm text-gray-500">Event Staff Only</p>
+      <Link
+        to="/"
+        className="inline-block mt-2 px-6 py-3 rounded-full text-white text-sm font-semibold"
+        style={{ backgroundColor: "#d4198a" }}
+      >
+        Return to Home
+      </Link>
+    </div>
+  </div>
+);
+
+// ── CSV export ────────────────────────────────────────────────────────────────
+const exportCSV = (records: CheckInRecord[]) => {
+  const header = "Reference,Timestamp";
+  const rows = records.map((r) => `${r.reference},${r.timestamp}`);
+  const csv = [header, ...rows].join("\n");
+  const blob = new Blob([csv], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "ewoman-checkins.csv";
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
+// ── Dashboard ─────────────────────────────────────────────────────────────────
 const AdminDashboard = () => {
+  const params = new URLSearchParams(window.location.search);
+  const key = params.get("key");
+
+  if (key !== STAFF_KEY) return <AccessRestricted />;
+
   const [records, setRecords] = useState<CheckInRecord[]>([]);
   const [lastRefresh, setLastRefresh] = useState(new Date());
 
@@ -45,8 +89,8 @@ const AdminDashboard = () => {
               <p className="text-white text-sm mt-0.5">E-Woman Conference 2026 — Check-In Overview</p>
             </div>
             <Link
-              to="/checkin"
-              className="bg-white text-sm font-bold px-4 py-2 rounded-full transition hover:bg-white/90"
+              to={`/checkin?key=${STAFF_KEY}`}
+              className="bg-white text-sm font-bold px-4 py-2 rounded-full transition hover:bg-gray-100"
               style={{ color: "#d4198a" }}
             >
               Open Scanner
@@ -69,8 +113,8 @@ const AdminDashboard = () => {
           ))}
         </div>
 
-        {/* Refresh + clear controls */}
-        <div className="flex items-center justify-between">
+        {/* Controls row */}
+        <div className="flex items-center justify-between flex-wrap gap-3">
           <button
             onClick={refresh}
             className="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full bg-white border border-gray-200 hover:bg-gray-50 transition"
@@ -79,16 +123,29 @@ const AdminDashboard = () => {
             <RefreshCw size={14} />
             Refresh
           </button>
+
           <p className="text-xs text-gray-400">
             Last updated: {lastRefresh.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
           </p>
-          <button
-            onClick={handleClear}
-            className="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full bg-red-50 border border-red-200 hover:bg-red-100 transition text-red-600"
-          >
-            <Trash2 size={14} />
-            Clear All
-          </button>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => exportCSV(records)}
+              disabled={records.length === 0}
+              className="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full bg-white border border-gray-200 hover:bg-gray-50 transition disabled:opacity-40"
+              style={{ color: "#1a001f" }}
+            >
+              <Download size={14} />
+              Export CSV
+            </button>
+            <button
+              onClick={handleClear}
+              className="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full bg-red-50 border border-red-200 hover:bg-red-100 transition text-red-600"
+            >
+              <Trash2 size={14} />
+              Clear All
+            </button>
+          </div>
         </div>
 
         {/* Duplicate warnings */}

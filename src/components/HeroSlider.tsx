@@ -130,22 +130,20 @@ export default function HeroSlider() {
         </div>
 
         {/* ── Floating Event Card ──────────────────────────────────────────── */}
-        <div
-          className="mx-auto w-full"
-          style={{ maxWidth: 420 }}
-        >
+        <div className="mx-auto w-full" style={{ maxWidth: 420 }}>
           <div
             style={{
-              background: "#ffffff",
+              background: "rgba(255,255,255,0.96)",
               borderRadius: 20,
-              boxShadow: "0 32px 80px rgba(0,0,0,0.38), 0 8px 24px rgba(212,25,138,0.18)",
-              padding: "36px 36px 32px",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.25)",
+              padding: 36,
+              textAlign: "center",
             }}
           >
             {/* Card title */}
             <h2
-              className="font-display text-xl font-bold mb-1 text-center"
-              style={{ color: "#1a001f" }}
+              className="font-display font-bold mb-1"
+              style={{ fontSize: 26, color: "#1a001f" }}
             >
               E-Woman Conference 2026
             </h2>
@@ -154,32 +152,25 @@ export default function HeroSlider() {
             <div className="gold-divider mb-5" />
 
             {/* Event details */}
-            <ul className="space-y-3 mb-5 text-left">
-              <li className="flex items-center gap-3">
-                <Calendar size={16} style={{ color: "#d4198a", flexShrink: 0 }} />
-                <span className="text-sm font-medium" style={{ color: "#4b5563" }}>
-                  March 13–14, 2026
-                </span>
+            <ul className="space-y-3 mb-5">
+              <li className="flex items-center justify-center gap-2">
+                <Calendar size={15} style={{ color: "#d4198a", flexShrink: 0 }} />
+                <span style={{ fontSize: 14, color: "#4a4a4a" }}>March 13–14, 2026</span>
               </li>
-              <li className="flex items-center gap-3">
-                <MapPin size={16} style={{ color: "#d4198a", flexShrink: 0 }} />
-                <span className="text-sm font-medium" style={{ color: "#4b5563" }}>
-                  Hilton Hotel – Yaoundé
-                </span>
+              <li className="flex items-center justify-center gap-2">
+                <MapPin size={15} style={{ color: "#d4198a", flexShrink: 0 }} />
+                <span style={{ fontSize: 14, color: "#4a4a4a" }}>Hilton Hotel – Yaoundé</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Users size={16} style={{ color: "#d4198a", flexShrink: 0 }} />
-                <span className="text-sm font-semibold" style={{ color: "#d4198a" }}>
+              <li className="flex items-center justify-center gap-2">
+                <Users size={15} style={{ color: "#d4198a", flexShrink: 0 }} />
+                <span style={{ fontSize: 14, fontWeight: 600, color: "#d4198a" }}>
                   500+ Women Expected
                 </span>
               </li>
             </ul>
 
             {/* Price line */}
-            <p
-              className="text-center text-sm font-semibold mb-5"
-              style={{ color: "#6b7280" }}
-            >
+            <p className="mb-5" style={{ fontSize: 14, color: "#6b7280" }}>
               Conference Pass —{" "}
               <span style={{ color: "#1a001f", fontWeight: 700 }}>50,000 FCFA</span>
             </p>
@@ -187,10 +178,12 @@ export default function HeroSlider() {
             {/* CTA button */}
             <Link
               to="/register"
-              className="block w-full text-center py-4 rounded-full font-bold text-white text-base transition-all duration-200"
+              className="block w-full text-center text-white font-semibold transition-all duration-200"
               style={{
                 backgroundColor: "#d4198a",
-                boxShadow: "0 6px 24px rgba(212,25,138,0.40)",
+                padding: "14px 26px",
+                borderRadius: 999,
+                fontSize: 15,
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "#c0157c";

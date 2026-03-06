@@ -1,10 +1,38 @@
+import { useRef, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Calendar, MapPin, Download } from "lucide-react";
+import { Calendar, MapPin, Download, FileDown } from "lucide-react";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import TicketQR from "@/components/TicketQR";
 
 const Ticket = () => {
   const { reference } = useParams<{ reference: string }>();
   const ref = (reference ?? "").toUpperCase();
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [pdfLoading, setPdfLoading] = useState(false);
+
+  const downloadPDF = async () => {
+    if (!cardRef.current) return;
+    setPdfLoading(true);
+    try {
+      const canvas = await html2canvas(cardRef.current, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+      });
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+      const pageW = pdf.internal.pageSize.getWidth();
+      const pageH = pdf.internal.pageSize.getHeight();
+      const imgW = pageW - 40; // 20mm margin each side
+      const imgH = (canvas.height * imgW) / canvas.width;
+      const yOffset = (pageH - imgH) / 2;
+      pdf.addImage(imgData, "PNG", 20, yOffset > 0 ? yOffset : 10, imgW, imgH);
+      pdf.save(`ewoman-ticket-${ref}.pdf`);
+    } finally {
+      setPdfLoading(false);
+    }
+  };
 
   if (!ref) {
     return (
@@ -23,8 +51,8 @@ const Ticket = () => {
     <div className="min-h-screen gradient-magenta py-16 px-4 flex items-center">
       <div className="max-w-sm mx-auto w-full">
 
-        {/* Ticket card */}
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+        {/* Ticket card — captured for PDF */}
+        <div ref={cardRef} className="bg-white rounded-3xl shadow-2xl overflow-hidden">
 
           {/* Header */}
           <div
@@ -64,25 +92,41 @@ const Ticket = () => {
               </div>
             </div>
 
-            {/* Print hint */}
-            <button
-              onClick={() => window.print()}
-              className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-2.5 rounded-full border-2 transition-all"
-              style={{ borderColor: "#d4198a", color: "#d4198a" }}
-            >
-              <Download size={15} />
-              Save / Print Ticket
-            </button>
-
-            <Link
-              to="/"
-              className="block text-xs text-gray-400 hover:text-gray-600 transition underline underline-offset-2"
-            >
-              Return to homepage
-            </Link>
-
           </div>
         </div>
+
+        {/* Action buttons — outside the card so they don't appear in PDF */}
+        <div className="mt-5 space-y-3">
+
+          {/* PDF Download */}
+          <button
+            onClick={downloadPDF}
+            disabled={pdfLoading}
+            className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full font-semibold text-sm text-white transition-all disabled:opacity-60"
+            style={{ backgroundColor: "#d4198a", boxShadow: "0 4px 16px rgba(212,25,138,0.35)" }}
+          >
+            <FileDown size={16} />
+            {pdfLoading ? "Generating PDF…" : `Download Ticket (PDF)`}
+          </button>
+
+          {/* Print */}
+          <button
+            onClick={() => window.print()}
+            className="flex items-center justify-center gap-2 w-full py-3 rounded-full font-semibold text-sm border-2 transition-all"
+            style={{ borderColor: "rgba(255,255,255,0.6)", color: "#ffffff" }}
+          >
+            <Download size={15} />
+            Save / Print Ticket
+          </button>
+
+          <Link
+            to="/"
+            className="block text-center text-xs text-white underline underline-offset-2 pt-1"
+          >
+            Return to homepage
+          </Link>
+        </div>
+
       </div>
     </div>
   );
