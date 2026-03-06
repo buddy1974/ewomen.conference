@@ -292,6 +292,16 @@
   transform: translateY(-1px);
 }
 
+@keyframes pulseGlow {
+  0%   { opacity: 0.9; }
+  50%  { opacity: 1;   }
+  100% { opacity: 0.9; }
+}
+
+.registration-counter {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
 /* ── Section utility classes ──────────────────────────────────────────────── */
 :root {
   --ew-dark:    #1a001f;

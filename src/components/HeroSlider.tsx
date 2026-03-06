@@ -14,6 +14,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Calendar, MapPin, Users } from "lucide-react";
 import CountdownTimer from "@/components/CountdownTimer";
+import RegistrationCounter from "@/components/RegistrationCounter";
 import { trackEvent } from "@/lib/analytics";
 
 const SLIDES = [
@@ -199,6 +200,9 @@ export default function HeroSlider() {
             </Link>
           </div>
         </div>
+
+        {/* Registration counter */}
+        <RegistrationCounter />
       </div>
 
       {/* ── Dot indicators ──────────────────────────────────────────────────── */}
