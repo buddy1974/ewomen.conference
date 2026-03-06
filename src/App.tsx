@@ -14,6 +14,7 @@ import Press from "./pages/Press";
 import Register from "./pages/Register";
 import AuthorDetail from "./pages/AuthorDetail";
 import Media from "./pages/Media";
+import PaymentSuccess from "./pages/PaymentSuccess";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
               <Route path="/media" element={<Media />} />
               <Route path="/authors/:slug" element={<AuthorDetail />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContent } from "@/contexts/ContentContext";
 
+
 const Speakers = () => {
   const { content } = useContent();
   const c = content!;
@@ -67,6 +68,17 @@ const Speakers = () => {
           </div>
         </div>
       </section>
+
+      {/* MOBILE STICKY REGISTER */}
+      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-black/90 backdrop-blur-md border-t border-white/10 p-4 z-50">
+        <Link
+          to="/register"
+          className="block w-full text-center bg-white !text-magenta py-3 rounded-full font-semibold text-lg shadow-lg"
+          style={{ color: "#d4198a" }}
+        >
+          Secure Your Seat – 50,000 FCFA
+        </Link>
+      </div>
     </div>
   );
 };

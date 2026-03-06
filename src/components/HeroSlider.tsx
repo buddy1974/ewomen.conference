@@ -12,6 +12,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import CountdownTimer from "@/components/CountdownTimer";
+import { trackEvent } from "@/lib/analytics";
 
 const SLIDES = [
   "/images/slideshow/1.jpg",
@@ -112,10 +114,26 @@ export default function HeroSlider() {
 
         {/* Subtitle */}
         <p
-          className="font-display text-xl md:text-2xl italic text-white/85 mb-10 max-w-2xl mx-auto leading-relaxed"
+          className="font-display text-xl md:text-2xl italic text-white/85 mb-8 max-w-2xl mx-auto leading-relaxed"
           style={{ textShadow: "0 2px 8px rgba(26,0,31,0.6)" }}
         >
           Redefining Empowerment, One Woman at a Time.
+        </p>
+
+        {/* Countdown Timer */}
+        <div className="mb-5">
+          <p className="text-white/70 text-xs uppercase tracking-widest mb-4">
+            Event Starts In
+          </p>
+          <CountdownTimer targetDate="2026-03-13T00:00:00" />
+        </div>
+
+        {/* Social proof */}
+        <p className="text-white/80 text-sm mb-1">
+          Over 500 women expected at Hilton Yaoundé
+        </p>
+        <p className="text-white font-semibold text-base mb-8" style={{ color: "#e0c55d" }}>
+          Conference Pass — 50,000 FCFA
         </p>
 
         {/* CTA Buttons */}
@@ -136,14 +154,16 @@ export default function HeroSlider() {
               e.currentTarget.style.backgroundColor = "#ff33aa";
               e.currentTarget.style.transform = "scale(1)";
             }}
+            onClick={() => trackEvent("hero_cta_click")}
           >
-            Register Now
+            Secure Your Seat
           </Link>
           <a
             href={`https://wa.me/237683493220?text=${encodeURIComponent("Hello, I want to register for E-WOMAN 2026")}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-10 py-4 rounded-full font-semibold text-lg text-white border-2 border-white/50 hover:border-white hover:bg-white/10 transition"
+            onClick={() => trackEvent("hero_whatsapp_click")}
           >
             WhatsApp Us
           </a>

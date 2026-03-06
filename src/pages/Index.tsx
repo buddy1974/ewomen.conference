@@ -106,8 +106,8 @@ const Index = () => {
               <Link
                 key={speaker.slug}
                 to={`/speakers/${speaker.slug}`}
-                className="reveal glass-card overflow-hidden group hover:bg-white/15 transition-all block"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="reveal overflow-hidden group transition-all block rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1"
+                style={{ animationDelay: `${index * 0.1}s`, background: "#ffffff" }}
               >
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
@@ -117,9 +117,9 @@ const Index = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="font-display text-xl font-bold mb-1">{speaker.name}</h3>
-                  <p className="text-sm text-foreground/60 mb-2">{speaker.title}</p>
-                  <p className="text-sm text-accent">{speaker.topic}</p>
+                  <h3 className="font-display text-xl font-bold mb-1" style={{ color: "#1a001f" }}>{speaker.name}</h3>
+                  <p className="text-sm mb-2" style={{ color: "rgba(26,0,31,0.6)" }}>{speaker.title}</p>
+                  <p className="text-sm font-medium" style={{ color: "#d4198a" }}>{speaker.topic}</p>
                 </div>
               </Link>
             ))}
@@ -183,7 +183,7 @@ const Index = () => {
           to="/register"
           className="block w-full text-center bg-white !text-magenta py-3 rounded-full font-semibold text-lg hover:bg-white hover:!text-magenta-dark transition-all duration-200 shadow-lg"
         >
-          Register – {c.site.registrationFee}
+          Secure Your Seat – 50,000 FCFA
         </Link>
       </div>
     </div>

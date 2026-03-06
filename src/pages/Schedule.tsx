@@ -1,4 +1,5 @@
 import { Clock, Mic, Users, Coffee, Award } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useContent } from "@/contexts/ContentContext";
 
 const typeIcons: Record<string, React.ReactNode> = {
@@ -44,21 +45,24 @@ const Schedule = () => {
                     <div className={`w-3 h-3 rounded-full border-2 ${typeColors[item.type]} bg-white/90 z-10`} />
                   </div>
 
-                  <div className={`flex-1 glass-card p-5 sm:p-6 border-l-4 ${typeColors[item.type]}`}>
+                  <div
+                    className={`flex-1 p-5 sm:p-6 border-l-4 ${typeColors[item.type]} rounded-2xl shadow-sm`}
+                    style={{ background: "rgba(255,255,255,0.92)" }}
+                  >
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="flex items-center gap-2 text-foreground/50">
+                      <div className="flex items-center gap-2 text-xs font-medium" style={{ color: "rgba(26,0,31,0.55)" }}>
                         <Clock size={14} />
-                        <span className="text-sm font-medium">{item.time}</span>
+                        <span>{item.time}</span>
                       </div>
-                      <div className="flex items-center gap-1 text-gold text-xs font-semibold">
+                      <div className="flex items-center gap-1 text-xs font-semibold" style={{ color: "#a87e02" }}>
                         {typeIcons[item.type]}
                         <span className="capitalize">{item.type}</span>
                       </div>
                     </div>
-                    <h3 className="font-display text-lg font-bold mb-1">{item.title}</h3>
-                    <p className="text-sm text-foreground/60">{item.description}</p>
+                    <h3 className="font-display text-lg font-bold mb-1" style={{ color: "#1a001f" }}>{item.title}</h3>
+                    <p className="text-sm" style={{ color: "rgba(26,0,31,0.65)" }}>{item.description}</p>
                     {item.speaker && (
-                      <p className="text-sm text-accent mt-2 font-medium">{item.speaker}</p>
+                      <p className="text-sm mt-2 font-medium" style={{ color: "#d4198a" }}>{item.speaker}</p>
                     )}
                   </div>
                 </div>
@@ -67,6 +71,17 @@ const Schedule = () => {
           </div>
         </div>
       </section>
+
+      {/* MOBILE STICKY REGISTER */}
+      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-black/90 backdrop-blur-md border-t border-white/10 p-4 z-50">
+        <Link
+          to="/register"
+          className="block w-full text-center bg-white py-3 rounded-full font-semibold text-lg shadow-lg"
+          style={{ color: "#d4198a" }}
+        >
+          Secure Your Seat – 50,000 FCFA
+        </Link>
+      </div>
     </div>
   );
 };

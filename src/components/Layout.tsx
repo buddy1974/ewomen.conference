@@ -131,19 +131,31 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
             {/* Brand Column */}
             <div className="space-y-5">
-              <img
-                src="/images/logo.png"
-                alt="E-WOMAN 2026 Logo"
-                style={{ height: 120, width: "auto", objectFit: "contain" }}
-                onError={(e: SyntheticEvent<HTMLImageElement>) => {
-                  e.currentTarget.style.display = "none";
-                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                  if (fallback) fallback.style.display = "block";
+              <div
+                style={{
+                  background: "#ffffff",
+                  borderRadius: 12,
+                  padding: "10px 16px",
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.25)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
-              />
-              <span className="hidden font-display text-2xl font-bold text-foreground">
-                E-WOMAN 2026
-              </span>
+              >
+                <img
+                  src="/images/logo.png"
+                  alt="E-WOMAN 2026 Logo"
+                  style={{ height: 80, width: "auto", objectFit: "contain" }}
+                  onError={(e: SyntheticEvent<HTMLImageElement>) => {
+                    e.currentTarget.style.display = "none";
+                    const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.style.display = "block";
+                  }}
+                />
+                <span className="hidden font-display text-xl font-bold text-[#d4198a]">
+                  E-WOMAN 2026
+                </span>
+              </div>
               <p className="text-foreground/60 text-sm leading-relaxed">
                 A Spirit-led platform equipping women to rise in identity, spiritual authority, and kingdom influence.
               </p>

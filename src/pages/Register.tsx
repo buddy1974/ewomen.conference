@@ -1,4 +1,5 @@
 import { ExternalLink, MessageCircle, CheckCircle, Calendar, MapPin, Lock } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const PAYUNIT_URL = "https://lk.payunit.net/pay/2077d448-7372-4399-bb8a-f01126aa4b7e";
 const WA_URL = "https://wa.me/237683493220";
@@ -75,6 +76,28 @@ const Register = () => {
               <p className="font-display text-4xl font-bold text-gray-900">50,000 FCFA</p>
             </div>
 
+            {/* What happens next */}
+            <div className="bg-gray-50 rounded-2xl px-6 py-5">
+              <h4 className="text-sm font-bold text-gray-700 mb-3">What happens next</h4>
+              <ol className="space-y-2">
+                {[
+                  "Click the secure PayUnit payment button below",
+                  "Complete payment with MTN or Orange Money",
+                  "You'll be redirected to your confirmation page",
+                ].map((step, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
+                    <span
+                      className="flex-shrink-0 w-5 h-5 rounded-full text-white text-xs flex items-center justify-center font-bold mt-0.5"
+                      style={{ background: "#d4198a" }}
+                    >
+                      {i + 1}
+                    </span>
+                    {step}
+                  </li>
+                ))}
+              </ol>
+            </div>
+
             {/* CTA Button + Trust Line */}
             <div className="text-center space-y-3">
               <a
@@ -82,6 +105,7 @@ const Register = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 w-full bg-[#d4198a] hover:bg-[#c0157c] text-white py-5 px-8 rounded-full font-bold text-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                onClick={() => trackEvent("register_payunit_click")}
               >
                 Secure Your Seat – Pay 50,000 FCFA
                 <ExternalLink size={18} />
@@ -105,6 +129,7 @@ const Register = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white px-6 py-3 rounded-full font-semibold text-sm transition-all duration-200 shadow hover:shadow-md"
+                onClick={() => trackEvent("register_whatsapp_click")}
               >
                 <MessageCircle size={18} fill="white" />
                 Chat on WhatsApp
