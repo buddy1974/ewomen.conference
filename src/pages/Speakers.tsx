@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 import { useContent } from "@/contexts/ContentContext";
 
+const BADGE_KEYWORDS = ["Author", "Pastor", "Apostle", "Coach", "Mentor", "Entrepreneur", "Speaker", "Minister", "Leader", "Prophet"];
+
+const getSpeakerBadge = (title: string): string => {
+  for (const kw of BADGE_KEYWORDS) {
+    if (title.toLowerCase().includes(kw.toLowerCase())) return kw;
+  }
+  return title.split(/[,&|•/]/)[0].trim().substring(0, 18);
+};
+
 
 const Speakers = () => {
   const { content } = useContent();
@@ -53,9 +62,15 @@ const Speakers = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="font-display text-xl font-bold mb-1" style={{ color: "#1a001f" }}>
+                  <h3 className="font-display text-xl font-bold mb-2" style={{ color: "#1a001f" }}>
                     {speaker.name}
                   </h3>
+                  <span
+                    className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-2"
+                    style={{ background: "rgba(212,25,138,0.10)", color: "#d4198a" }}
+                  >
+                    {getSpeakerBadge(speaker.title)}
+                  </span>
                   <p className="text-sm mb-2" style={{ color: "rgba(26,0,31,0.65)" }}>
                     {speaker.title}
                   </p>
