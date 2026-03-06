@@ -410,6 +410,78 @@ const Index = () => {
       {/* VISIONARIES */}
       <VisionariesSection />
 
+      {/* ── PART 5: HIGHLIGHTS FROM PREVIOUS CONFERENCES ─────────────────────── */}
+      <section className="py-20 bg-background">
+        <div className="container px-4">
+          <div className="text-center mb-12 reveal">
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#e0c55d" }}>
+              Conference History
+            </p>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-3">
+              Highlights From Previous E-Woman Conferences
+            </h2>
+            <div className="gold-divider" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+            {[
+              {
+                src: "/images/gallery/delaware/delaware-1.jpg",
+                alt: "Women leaders connecting during a powerful networking session at E-Woman Conference Delaware",
+                caption: "Women leaders connecting during a powerful networking session.",
+              },
+              {
+                src: "/images/gallery/delaware/delaware-3.jpg",
+                alt: "Speaker delivering transformational leadership insight at E-Woman Conference",
+                caption: "Speaker delivering transformational leadership insight.",
+              },
+              {
+                src: "/images/gallery/yaounde/img-1.jpg",
+                alt: "Moments of celebration and sisterhood at E-Woman Conference Yaoundé",
+                caption: "Moments of celebration and sisterhood during the conference experience.",
+              },
+              {
+                src: "/images/gallery/delaware/delaware-5.jpg",
+                alt: "Women rising in purpose at E-Woman Conference Delaware",
+                caption: "Women rising in identity, leadership, and influence.",
+              },
+              {
+                src: "/images/gallery/yaounde/img-10.jpg",
+                alt: "E-Woman Conference Yaoundé — spiritual empowerment session",
+                caption: "Spiritual empowerment and alignment at the Yaoundé gathering.",
+              },
+            ].map((img, i) => (
+              <div
+                key={i}
+                className="reveal group overflow-hidden rounded-2xl relative"
+                style={{ animationDelay: `${i * 0.1}s`, boxShadow: "0 4px 24px rgba(0,0,0,0.25)" }}
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end">
+                  <p className="px-4 pb-4 text-white text-sm font-medium leading-snug">
+                    {img.caption}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="reveal text-center mt-10">
+            <Link
+              to="/gallery"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm border border-white/20 text-white hover:bg-white/10 transition"
+            >
+              View Full Gallery <ArrowRight size={15} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA — Parts 4 & 5 ────────────────────────────────────────────────── */}
       <section className="py-24 gradient-dark">
         <div className="container px-4 text-center max-w-2xl mx-auto">
