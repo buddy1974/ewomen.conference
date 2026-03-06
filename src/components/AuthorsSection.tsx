@@ -73,7 +73,7 @@ const AuthorsSection = () => {
             The E-Woman Authors
           </h2>
           <div className="gold-divider mb-6" />
-          <p className="text-foreground/60 max-w-2xl mx-auto text-base leading-relaxed">
+          <p className="text-white max-w-2xl mx-auto text-base leading-relaxed font-medium">
             E-Woman is more than a conference — it is a Spirit-led movement shaped by voices of depth,
             conviction, and transformational insight. Our authors address identity, resilience, marriage,
             generational restoration, and spiritual authority — equipping women to rise in clarity and

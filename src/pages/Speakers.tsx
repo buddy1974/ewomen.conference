@@ -14,9 +14,9 @@ const Speakers = () => {
           <h1 className="reveal font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
             Our Speakers
           </h1>
-          <p className="reveal reveal-delay-1 mt-4 text-foreground/70 text-lg max-w-2xl mx-auto">
+          <p className="reveal reveal-delay-1 mt-4 text-white font-medium text-lg max-w-2xl mx-auto">
             Meet the visionary women shaping the conversations at{" "}
-            <span className="text-accent font-medium">{c.site.name}</span>.
+            <span className="text-white font-bold">{c.site.name}</span>.
           </p>
         </div>
       </section>
@@ -42,10 +42,10 @@ const Speakers = () => {
               <Link
                 key={speaker.slug}
                 to={`/speakers/${speaker.slug}`}
-                className={`reveal glass-card overflow-hidden group hover:bg-white/15 transition-all block`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="reveal overflow-hidden group transition-all block rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1"
+                style={{ animationDelay: `${index * 0.1}s`, background: "#ffffff" }}
               >
-                <div className="aspect-[4/5] overflow-hidden rounded-xl">
+                <div className="aspect-[4/5] overflow-hidden rounded-t-2xl">
                   <img
                     src={speaker.image}
                     alt={speaker.name}
@@ -53,13 +53,13 @@ const Speakers = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="font-display text-xl font-bold mb-1">
+                  <h3 className="font-display text-xl font-bold mb-1" style={{ color: "#1a001f" }}>
                     {speaker.name}
                   </h3>
-                  <p className="text-sm text-foreground/60 mb-2">
+                  <p className="text-sm mb-2" style={{ color: "rgba(26,0,31,0.65)" }}>
                     {speaker.title}
                   </p>
-                  <p className="text-sm text-accent">
+                  <p className="text-sm font-medium" style={{ color: "#d4198a" }}>
                     {speaker.topic}
                   </p>
                 </div>

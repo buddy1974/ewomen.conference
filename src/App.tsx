@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,6 +18,11 @@ import Media from "./pages/Media";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import NotFound from "./pages/NotFound";
 
+// Heavy event-operations pages — lazy-loaded to keep main bundle small
+const CheckIn = lazy(() => import("./pages/CheckIn"));
+const Ticket = lazy(() => import("./pages/Ticket"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -27,6 +33,7 @@ const App = () => (
       <ContentProvider>
         <BrowserRouter>
           <Layout>
+            <Suspense fallback={<div className="min-h-screen gradient-magenta" />}>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/speakers" element={<Speakers />} />
@@ -38,8 +45,12 @@ const App = () => (
               <Route path="/authors/:slug" element={<AuthorDetail />} />
               <Route path="/register" element={<Register />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
+              <Route path="/checkin" element={<CheckIn />} />
+              <Route path="/ticket/:reference" element={<Ticket />} />
+              <Route path="/admin" element={<AdminDashboard />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            </Suspense>
           </Layout>
         </BrowserRouter>
       </ContentProvider>

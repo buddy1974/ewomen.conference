@@ -72,7 +72,7 @@ const TestimonialSlider = ({ testimonials }: { testimonials: Testimonial[] }) =>
           fading ? "opacity-0" : "opacity-100"
         }`}
       >
-        <Quote className="mx-auto mb-6 text-accent/60" size={36} />
+        <Quote className="mx-auto mb-6" size={36} style={{ color: "#d4198a" }} />
 
         {t.image && (
           <img
@@ -88,7 +88,7 @@ const TestimonialSlider = ({ testimonials }: { testimonials: Testimonial[] }) =>
         <div>
           <p className="font-semibold">{t.name}</p>
           {(t.location || t.role) && (
-            <p className="text-sm text-foreground/60">{t.location || t.role}</p>
+            <p className="text-sm" style={{ color: "rgba(26,0,31,0.7)" }}>{t.location || t.role}</p>
           )}
         </div>
       </div>

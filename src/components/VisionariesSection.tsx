@@ -30,7 +30,7 @@ const VisionariesSection = () => {
             The Visionaries Behind E-Woman
           </h2>
           <div className="gold-divider mb-5" />
-          <p className="text-white/60 max-w-xl mx-auto text-base leading-relaxed">
+          <p className="text-white max-w-xl mx-auto text-base leading-relaxed">
             Great movements are born from bold visions and courageous hearts. Meet the leaders who dared to dream of a conference that would change women's lives.
           </p>
         </div>
@@ -68,7 +68,7 @@ const VisionariesSection = () => {
                 <p className="text-sm font-medium tracking-wide" style={{ color: "#e0c55d" }}>
                   {person.title}
                 </p>
-                <p className="text-white/70 leading-relaxed text-base">
+                <p className="text-white leading-relaxed text-base">
                   {person.bio}
                 </p>
                 <p className="italic text-base font-medium" style={{ color: "#ff33aa" }}>
