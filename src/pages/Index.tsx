@@ -15,6 +15,7 @@ import TestimonialSlider from "@/components/TestimonialSlider";
 import HeroSlider from "@/components/HeroSlider";
 import AuthorsSection from "@/components/AuthorsSection";
 import VisionariesSection from "@/components/VisionariesSection";
+import RegistrationActivity from "@/components/RegistrationActivity";
 
 // ── What You Get items ────────────────────────────────────────────────────────
 const PASS_INCLUDES = [
@@ -58,6 +59,14 @@ const Index = () => {
 
       {/* HERO — fullscreen fade slider */}
       <HeroSlider />
+
+      {/* ── PART 3: SEATS FILLING BANNER ────────────────────────────────────── */}
+      <div
+        className="text-center text-sm font-semibold px-4 py-3"
+        style={{ background: "#e0c55d", color: "#1a001f" }}
+      >
+        Seats are filling quickly for E-Woman Conference 2026. Early registration is strongly advised.
+      </div>
 
       {/* TRUST STRIP */}
       <section className="py-10 bg-background border-y border-white/10 reveal">
@@ -439,6 +448,9 @@ const Index = () => {
           </p>
         </div>
       </section>
+
+      {/* ── REGISTRATION ACTIVITY NOTIFICATION ──────────────────────────────── */}
+      <RegistrationActivity />
 
       {/* MOBILE STICKY REGISTER */}
       <div className="fixed bottom-0 left-0 right-0 md:hidden bg-black/90 backdrop-blur-md border-t border-white/10 p-4 z-50">
