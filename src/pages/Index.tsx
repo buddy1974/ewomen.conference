@@ -74,6 +74,91 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ── PART 1: GLOBAL MOVEMENT ─────────────────────────────────────────── */}
+      <section className="py-20" style={{ background: "linear-gradient(135deg, #d4198a 0%, #9b0e61 100%)" }}>
+        <div className="container px-4">
+          <div className="max-w-3xl mx-auto text-center space-y-6 reveal">
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold" style={{ color: "#e0c55d" }}>
+              More Than a Conference
+            </p>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+              A Movement of Women Rising
+            </h2>
+            <div className="gold-divider" />
+            <p className="text-white/90 text-lg leading-relaxed">
+              E-Woman Conference is more than an event.
+            </p>
+            <p className="text-white/85 text-base leading-relaxed">
+              It is a growing movement of women who are rising in identity, leadership, and influence across nations.
+              Each year, women gather not only to learn, but to transform — to return to their communities stronger,
+              clearer, and equipped to lead.
+            </p>
+            <p className="text-white/85 text-base leading-relaxed">
+              From entrepreneurs to ministry leaders, from young professionals to seasoned executives, E-Woman continues
+              to shape women who are ready to build legacy.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PART 2: CONFERENCE EXPERIENCE ────────────────────────────────────── */}
+      <section className="py-20 bg-background">
+        <div className="container px-4">
+          <div className="text-center mb-12 reveal">
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#e0c55d" }}>
+              The Experience
+            </p>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-3">
+              What Happens at E-Woman
+            </h2>
+            <div className="gold-divider" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
+            {[
+              {
+                icon: <Mic size={28} />,
+                title: "Leadership Sessions",
+                body: "Insightful talks from experienced women leaders.",
+              },
+              {
+                icon: <BookOpen size={28} />,
+                title: "Transformational Conversations",
+                body: "Real discussions about purpose, faith, leadership, and life.",
+              },
+              {
+                icon: <Users size={28} />,
+                title: "Powerful Networking",
+                body: "Meaningful connections with women from different cities and nations.",
+              },
+              {
+                icon: <Sparkles size={28} />,
+                title: "Spiritual Empowerment",
+                body: "Moments of prayer, reflection, and spiritual alignment.",
+              },
+            ].map((card, i) => (
+              <div
+                key={i}
+                className="reveal rounded-2xl p-6 text-center space-y-4 shadow-sm"
+                style={{ animationDelay: `${i * 0.1}s`, background: "#ffffff" }}
+              >
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto"
+                  style={{ background: "linear-gradient(135deg, #d4198a, #ff33aa)", color: "#fff" }}
+                >
+                  {card.icon}
+                </div>
+                <h3 className="font-display text-base font-bold leading-snug" style={{ color: "#1a001f" }}>
+                  {card.title}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(26,0,31,0.6)" }}>
+                  {card.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── WHAT YOUR PASS INCLUDES ─────────────────────────────────────────── */}
       <section className="py-20 bg-background">
         <div className="container px-4">
@@ -175,6 +260,54 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ── PART 3: INTERNATIONAL PARTICIPATION ─────────────────────────────── */}
+      <section
+        className="py-20 relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg, #1a001f 0%, hsl(329,70%,10%) 100%)" }}
+      >
+        {/* Decorative radial glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,25,138,0.12) 0%, transparent 70%)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="container px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center space-y-6 reveal">
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold" style={{ color: "#e0c55d" }}>
+              Beyond Borders
+            </p>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+              Women From Across Nations
+            </h2>
+            <div className="gold-divider" />
+            <p className="text-white/90 text-base leading-relaxed">
+              E-Woman Conference brings together women from Cameroon and international destinations.
+            </p>
+            <p className="text-white/80 text-base leading-relaxed">
+              Each year the gathering grows — creating a powerful environment where diverse experiences, cultures,
+              and leadership journeys meet.
+            </p>
+            <p className="text-white/80 text-base leading-relaxed">
+              The result is a community of women who are connected beyond borders and committed to lifting
+              one another higher.
+            </p>
+            <div className="flex flex-wrap justify-center gap-8 pt-4">
+              {["Cameroon", "United States", "United Kingdom", "France", "Africa"].map((loc) => (
+                <span
+                  key={loc}
+                  className="text-xs font-semibold px-4 py-2 rounded-full border"
+                  style={{ color: "#e0c55d", borderColor: "rgba(224,197,93,0.35)" }}
+                >
+                  {loc}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FEATURED SPEAKERS */}
       <section className="py-20 gradient-dark">
         <div className="container px-4">
@@ -268,28 +401,42 @@ const Index = () => {
       {/* VISIONARIES */}
       <VisionariesSection />
 
-      {/* CTA */}
-      <section className="py-20 gradient-dark">
-        <div className="container px-4 text-center">
-          <h2 className="reveal font-display text-3xl sm:text-4xl font-bold mb-4">
-            Don't Miss This Moment
-          </h2>
-          <p className="reveal reveal-delay-1 text-white max-w-xl mx-auto mb-2">
-            Spaces are limited. Secure your seat at {c.site.name}.
+      {/* ── CTA — Parts 4 & 5 ────────────────────────────────────────────────── */}
+      <section className="py-24 gradient-dark">
+        <div className="container px-4 text-center max-w-2xl mx-auto">
+          <p className="reveal text-xs uppercase tracking-[0.25em] font-semibold mb-4" style={{ color: "#e0c55d" }}>
+            Limited Seats Available
           </p>
-          <p className="reveal reveal-delay-1 text-white text-sm mb-4">
-            Limited seating available. Early registration strongly advised.
+          <h2 className="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
+            Secure Your Seat at E-Woman Conference 2026
+          </h2>
+          <div className="gold-divider mb-6" />
+          <p className="reveal reveal-delay-1 text-white/90 text-base leading-relaxed mb-3">
+            Join women from across Cameroon and international destinations for two powerful days of
+            leadership, empowerment, and transformation.
+          </p>
+          <p className="reveal reveal-delay-1 text-white font-semibold mb-2">
+            March 13 – 14
+          </p>
+          <p className="reveal reveal-delay-1 text-white mb-6">
+            Hilton Hotel — Yaoundé
           </p>
           <p className="reveal reveal-delay-2 text-white font-bold text-xl mb-8">
             {c.site.registrationFee}
           </p>
           <Link
             to="/register"
-            className="reveal reveal-delay-3 inline-flex items-center justify-center gap-2 bg-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg transition-all duration-200"
+            className="reveal reveal-delay-3 inline-flex items-center justify-center gap-2 bg-white px-10 py-4 rounded-full font-bold text-lg shadow-lg transition-all duration-200 hover:scale-105"
             style={{ color: "#d4198a" }}
           >
             Register Now <ArrowRight size={18} />
           </Link>
+
+          {/* Part 5 — Social Proof Line */}
+          <p className="reveal reveal-delay-3 mt-8 text-white/70 text-sm leading-relaxed">
+            Hundreds of women have already experienced the E-Woman movement.
+            <br />Now it is your turn.
+          </p>
         </div>
       </section>
 

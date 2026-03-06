@@ -213,8 +213,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-white/10 text-center text-white text-xs">
-            © {new Date().getFullYear()} E-WOMAN Conference. All rights reserved.
+          <div className="mt-12 pt-8 border-t border-white/10 text-center">
+            <p className="text-white/75 text-sm leading-relaxed mb-4 max-w-2xl mx-auto">
+              E-Woman Conference is a Spirit-led leadership platform empowering women to rise in purpose, influence, and legacy.
+            </p>
+            <p className="text-white/60 text-xs">
+              © {new Date().getFullYear()} E-WOMAN Conference. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>
