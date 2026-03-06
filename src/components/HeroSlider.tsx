@@ -114,7 +114,7 @@ export default function HeroSlider() {
 
         {/* Subtitle */}
         <p
-          className="font-display text-xl md:text-2xl italic text-white/85 mb-8 max-w-2xl mx-auto leading-relaxed"
+          className="font-display text-xl md:text-2xl italic text-white mb-8 max-w-2xl mx-auto leading-relaxed"
           style={{ textShadow: "0 2px 8px rgba(26,0,31,0.6)" }}
         >
           Redefining Empowerment, One Woman at a Time.
@@ -122,14 +122,14 @@ export default function HeroSlider() {
 
         {/* Countdown Timer */}
         <div className="mb-5">
-          <p className="text-white/70 text-xs uppercase tracking-widest mb-4">
+          <p className="text-white text-xs uppercase tracking-widest mb-4 font-semibold">
             Event Starts In
           </p>
           <CountdownTimer targetDate="2026-03-13T00:00:00" />
         </div>
 
         {/* Social proof */}
-        <p className="text-white/80 text-sm mb-1">
+        <p className="text-white text-sm mb-1 font-medium">
           Over 500 women expected at Hilton Yaoundé
         </p>
         <p className="text-white font-semibold text-base mb-8" style={{ color: "#e0c55d" }}>
@@ -162,7 +162,7 @@ export default function HeroSlider() {
             href={`https://wa.me/237683493220?text=${encodeURIComponent("Hello, I want to register for E-WOMAN 2026")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-10 py-4 rounded-full font-semibold text-lg text-white border-2 border-white/50 hover:border-white hover:bg-white/10 transition"
+            className="inline-flex items-center justify-center px-10 py-4 rounded-full font-semibold text-lg text-white border-2 border-white hover:bg-white/10 transition"
             onClick={() => trackEvent("hero_whatsapp_click")}
           >
             WhatsApp Us

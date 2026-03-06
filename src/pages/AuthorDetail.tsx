@@ -13,7 +13,7 @@ const AuthorDetail = () => {
       <div className="min-h-screen gradient-dark flex items-center justify-center px-4">
         <div className="text-center space-y-4">
           <h1 className="font-display text-3xl font-bold text-white">Book Not Found</h1>
-          <p className="text-foreground/60">This book doesn't exist or has been moved.</p>
+          <p className="text-white">This book doesn't exist or has been moved.</p>
           <Link
             to="/"
             className="inline-flex items-center gap-2 btn-gold-gradient px-6 py-3 rounded-full font-semibold mt-4"
@@ -70,7 +70,7 @@ const AuthorDetail = () => {
                 {book.title}
               </h1>
               <div className="gold-divider mx-0" style={{ margin: 0 }} />
-              <p className="text-white/60 text-sm font-medium italic">
+              <p className="text-white text-sm font-medium italic">
                 Featured at E-WOMAN Conference 2026
               </p>
             </div>
@@ -85,7 +85,7 @@ const AuthorDetail = () => {
           {/* Back link */}
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition mb-10"
+            className="inline-flex items-center gap-2 text-sm text-white hover:text-white transition mb-10"
           >
             <ArrowLeft size={15} /> Back to Authors
           </Link>
@@ -96,10 +96,10 @@ const AuthorDetail = () => {
               About This Book
             </h2>
             <div className="gold-divider mx-0" style={{ margin: 0 }} />
-            <p className="text-foreground/80 text-lg leading-relaxed">
+            <p className="text-white text-lg leading-relaxed">
               {book.description}
             </p>
-            <p className="text-foreground/55 leading-relaxed">
+            <p className="text-white leading-relaxed">
               This book is part of the growing E-Woman library — a curated collection of Spirit-led
               literature by women who have not only survived their stories, but transformed them into
               tools of liberation, identity, and kingdom advancement for others.
@@ -112,20 +112,20 @@ const AuthorDetail = () => {
             style={{ background: "linear-gradient(135deg, rgba(212,25,138,0.06), rgba(224,197,93,0.04))" }}
           >
             <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "#e0c55d" }}>About the Author</p>
-            <p className="text-foreground/60 text-sm leading-relaxed">
+            <p className="text-white text-sm leading-relaxed">
               This book is authored by one of the distinguished guest speakers and authors
               featured at E-WOMAN 2026 — women of spiritual depth, personal conviction, and
               transformational impact. Their stories and writings have shaped communities across
               Africa and beyond.
             </p>
-            <p className="text-foreground/50 text-xs mt-3 italic">
+            <p className="text-white text-xs mt-3 italic">
               Full author details available at the conference.
             </p>
           </div>
 
           {/* WhatsApp CTA */}
           <div className="text-center space-y-3 mb-12">
-            <p className="text-foreground/50 text-sm">Want to enquire about this book?</p>
+            <p className="text-white text-sm">Want to enquire about this book?</p>
             <a
               href={waUrl}
               target="_blank"
@@ -136,7 +136,7 @@ const AuthorDetail = () => {
               <MessageCircle size={20} fill="white" />
               Enquire on WhatsApp
             </a>
-            <p className="text-foreground/30 text-xs">+237 6 83 49 32 20</p>
+            <p className="text-white text-xs">+237 6 83 49 32 20</p>
           </div>
 
           {/* Back CTA */}

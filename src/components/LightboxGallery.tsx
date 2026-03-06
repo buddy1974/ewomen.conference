@@ -67,12 +67,12 @@ const LightboxGallery = ({ images, categories }: LightboxGalleryProps) => {
       {/* Lightbox */}
       {lightboxIndex !== null && (
         <div className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center" onClick={closeLightbox}>
-          <button onClick={closeLightbox} className="absolute top-4 right-4 p-2 text-white/70 hover:text-white">
+          <button onClick={closeLightbox} className="absolute top-4 right-4 p-2 text-white hover:text-white">
             <X size={28} />
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); prevImage(); }}
-            className="absolute left-4 p-2 text-white/70 hover:text-white"
+            className="absolute left-4 p-2 text-white hover:text-white"
           >
             <ChevronLeft size={32} />
           </button>
@@ -84,11 +84,11 @@ const LightboxGallery = ({ images, categories }: LightboxGalleryProps) => {
           />
           <button
             onClick={(e) => { e.stopPropagation(); nextImage(); }}
-            className="absolute right-4 p-2 text-white/70 hover:text-white"
+            className="absolute right-4 p-2 text-white hover:text-white"
           >
             <ChevronRight size={32} />
           </button>
-          <div className="absolute bottom-4 text-center text-sm text-white/60">
+          <div className="absolute bottom-4 text-center text-sm text-white">
             {filtered[lightboxIndex].alt}
           </div>
         </div>

@@ -45,7 +45,7 @@ const Media = () => {
             E-Woman Conference
           </h1>
           <div className="gold-divider mb-6" />
-          <p className="text-white/75 text-lg leading-relaxed">
+          <p className="text-white text-lg leading-relaxed">
             A Spirit-led women's leadership platform rooted in Pentecostal conviction and biblical truth.
           </p>
         </div>
@@ -62,7 +62,7 @@ const Media = () => {
             About E-Woman Conference
           </h2>
           <div className="gold-divider mx-0 mb-6" style={{ margin: 0 }} />
-          <p className="text-white/85 text-lg leading-relaxed">
+          <p className="text-white text-lg leading-relaxed">
             E-Woman Conference is a Spirit-led women's leadership platform rooted in Pentecostal
             conviction and biblical truth. It equips women to rise in identity, spiritual authority,
             resilience, and kingdom influence.
@@ -78,7 +78,7 @@ const Media = () => {
             The Full Story
           </h2>
           <div className="gold-divider mx-0 mb-6" style={{ margin: 0 }} />
-          <div className="space-y-4 text-white/80 leading-relaxed text-base">
+          <div className="space-y-4 text-white leading-relaxed text-base">
             <p>
               Through authorship, mentorship, and transformational dialogue, E-Woman calls women to
               align with divine purpose and lead with clarity and excellence. Founded by Pst. Delphine
@@ -114,7 +114,7 @@ const Media = () => {
                   {p.icon}
                 </div>
                 <h3 className="font-semibold text-white">{p.title}</h3>
-                <p className="text-foreground/60 text-sm leading-relaxed">{p.text}</p>
+                <p className="text-white text-sm leading-relaxed">{p.text}</p>
               </div>
             ))}
           </div>
@@ -131,7 +131,7 @@ const Media = () => {
             <p className="text-xs uppercase tracking-widest mb-3" style={{ color: "#e0c55d" }}>
               Coming Soon
             </p>
-            <p className="text-foreground/60 leading-relaxed max-w-lg mx-auto">
+            <p className="text-white leading-relaxed max-w-lg mx-auto">
               Media coverage, press features, and broadcast links for E-Woman 2026 will be listed here
               following the conference. Check back after March 14, 2026.
             </p>
@@ -151,7 +151,7 @@ const Media = () => {
               <h2 className="font-display text-xl font-bold text-white">Media Contact</h2>
             </div>
             <div className="p-8 space-y-5">
-              <p className="text-white/80 leading-relaxed">
+              <p className="text-white leading-relaxed">
                 For press enquiries, interview requests, or media accreditation, reach the E-Woman
                 Media Team directly.
               </p>
@@ -169,7 +169,7 @@ const Media = () => {
                     <MessageCircle size={18} className="text-black" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/40 mb-0.5">WhatsApp</p>
+                    <p className="text-xs text-white mb-0.5">WhatsApp</p>
                     <p className="font-semibold text-sm">+237 6 83 49 32 20</p>
                   </div>
                 </a>
@@ -184,7 +184,7 @@ const Media = () => {
                     <Mail size={18} className="text-black" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/40 mb-0.5">Email</p>
+                    <p className="text-xs text-white mb-0.5">Email</p>
                     <p className="font-semibold text-sm">info@e-womanconference.online</p>
                   </div>
                 </a>

@@ -141,7 +141,7 @@ const CheckIn = () => {
           style={{ background: "linear-gradient(90deg, #d4198a 0%, #c0157c 100%)" }}
         >
           <h1 className="font-display text-2xl font-bold">E-Woman Conference Check-In</h1>
-          <p className="text-white/90 text-sm mt-1">Scan attendee QR code or enter payment reference</p>
+          <p className="text-white text-sm mt-1">Scan attendee QR code or enter payment reference</p>
         </div>
 
         {/* Status card */}

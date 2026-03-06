@@ -17,7 +17,7 @@ const Press = () => {
             Press Kit
           </h1>
           <div className="gold-divider mb-5" />
-          <p className="text-white/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white max-w-2xl mx-auto leading-relaxed">
             Resources for media professionals covering E-WOMAN 2026 — The Excelling Woman.
           </p>
         </div>
@@ -37,7 +37,7 @@ const Press = () => {
               <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "#e0c55d" }}>
                 Coming Soon
               </p>
-              <p className="text-foreground/60 leading-relaxed">
+              <p className="text-white leading-relaxed">
                 Official press materials coming soon. Media kits, speaker bios, and brand assets will
                 be available here before March 2026.
               </p>
@@ -56,7 +56,7 @@ const Press = () => {
               <h2 className="font-display text-xl font-bold text-white">Media Contact</h2>
             </div>
             <div className="p-8 space-y-5">
-              <p className="text-white/80 font-medium">E-WOMAN Media Team</p>
+              <p className="text-white font-medium">E-WOMAN Media Team</p>
               <div className="space-y-4">
                 <a
                   href={WA_URL}
@@ -71,7 +71,7 @@ const Press = () => {
                     <MessageCircle size={18} className="text-black" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/40 mb-0.5">WhatsApp</p>
+                    <p className="text-xs text-white mb-0.5">WhatsApp</p>
                     <p className="font-semibold text-sm text-white">+237 6 83 49 32 20</p>
                   </div>
                 </a>
@@ -86,7 +86,7 @@ const Press = () => {
                     <Mail size={18} className="text-black" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/40 mb-0.5">Email</p>
+                    <p className="text-xs text-white mb-0.5">Email</p>
                     <p className="font-semibold text-sm text-white">info@e-womanconference.online</p>
                   </div>
                 </a>
@@ -101,7 +101,7 @@ const Press = () => {
                     <Phone size={18} className="text-black" />
                   </div>
                   <div>
-                    <p className="text-xs text-white/40 mb-0.5">Phone</p>
+                    <p className="text-xs text-white mb-0.5">Phone</p>
                     <p className="font-semibold text-sm text-white">+237 6 83 49 32 20</p>
                   </div>
                 </a>

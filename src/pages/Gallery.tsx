@@ -10,7 +10,7 @@ const Gallery = () => {
       <section className="py-20 gradient-dark">
         <div className="container px-4 text-center">
           <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4">Gallery</h1>
-          <p className="text-foreground/70 max-w-2xl mx-auto">
+          <p className="text-white max-w-2xl mx-auto">
             Moments captured from our previous editions.
           </p>
         </div>

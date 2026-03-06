@@ -42,7 +42,7 @@ const AdminDashboard = () => {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="font-display text-2xl font-bold">Admin Dashboard</h1>
-              <p className="text-white/90 text-sm mt-0.5">E-Woman Conference 2026 — Check-In Overview</p>
+              <p className="text-white text-sm mt-0.5">E-Woman Conference 2026 — Check-In Overview</p>
             </div>
             <Link
               to="/checkin"

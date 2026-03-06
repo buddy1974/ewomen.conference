@@ -31,7 +31,7 @@ const Ticket = () => {
             className="px-8 py-6 text-white text-center"
             style={{ background: "linear-gradient(90deg, #d4198a 0%, #c0157c 100%)" }}
           >
-            <p className="text-xs uppercase tracking-widest text-white/80 mb-1">Your Ticket</p>
+            <p className="text-xs uppercase tracking-widest text-white mb-1">Your Ticket</p>
             <h1 className="font-display text-xl font-bold">E-Woman Conference 2026</h1>
           </div>
 

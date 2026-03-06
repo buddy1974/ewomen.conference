@@ -41,7 +41,7 @@ const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
           <div className="font-display text-2xl sm:text-4xl font-bold text-glow tabular-nums transition-all duration-300 ease-out">
             {String(value).padStart(2, "0")}
           </div>
-          <div className="text-xs sm:text-sm text-foreground/70 mt-1 font-body tracking-wider uppercase">
+          <div className="text-xs sm:text-sm text-white mt-1 font-body tracking-wider uppercase">
             {label}
           </div>
         </div>

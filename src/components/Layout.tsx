@@ -67,7 +67,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 className={`text-sm font-semibold tracking-wide transition-all ${
                   location.pathname === link.href
                     ? "text-white underline underline-offset-4"
-                    : "text-white/90 hover:text-white"
+                    : "text-white hover:text-white"
                 }`}
               >
                 {link.label}
@@ -103,7 +103,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   className={`py-2 px-3 rounded-lg text-sm font-semibold tracking-wide transition-all ${
                     location.pathname === link.href
                       ? "bg-white/20 text-white"
-                      : "text-white/90 hover:bg-white/10 hover:text-white"
+                      : "text-white hover:bg-white/10 hover:text-white"
                   }`}
                 >
                   {link.label}
@@ -156,7 +156,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   E-WOMAN 2026
                 </span>
               </div>
-              <p className="text-foreground/60 text-sm leading-relaxed">
+              <p className="text-white text-sm leading-relaxed">
                 A Spirit-led platform equipping women to rise in identity, spiritual authority, and kingdom influence.
               </p>
               <p className="text-sm font-semibold" style={{ color: "#e0c55d" }}>
@@ -166,7 +166,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
             {/* Navigation Column */}
             <div>
-              <h4 className="font-display text-xs uppercase tracking-widest text-foreground/40 mb-4">
+              <h4 className="font-display text-xs uppercase tracking-widest text-white mb-4">
                 Navigate
               </h4>
               <ul className="space-y-3">
@@ -179,7 +179,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   { label: "Register", href: "/register" },
                 ].map((link) => (
                   <li key={link.href}>
-                    <Link to={link.href} className="text-sm text-foreground/60 hover:text-foreground transition">
+                    <Link to={link.href} className="text-sm text-white hover:text-white transition">
                       {link.label}
                     </Link>
                   </li>
@@ -189,10 +189,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
             {/* Contact Column */}
             <div>
-              <h4 className="font-display text-xs uppercase tracking-widest text-foreground/40 mb-4">
+              <h4 className="font-display text-xs uppercase tracking-widest text-white mb-4">
                 Contact
               </h4>
-              <ul className="space-y-3 text-sm text-foreground/60">
+              <ul className="space-y-3 text-sm text-white">
                 <li>
                   <p>Hilton Hotel</p>
                   <p>Yaoundé, Cameroon</p>
@@ -213,7 +213,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-white/10 text-center text-foreground/30 text-xs">
+          <div className="mt-12 pt-8 border-t border-white/10 text-center text-white text-xs">
             © {new Date().getFullYear()} E-WOMAN Conference. All rights reserved.
           </div>
         </div>

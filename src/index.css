@@ -82,7 +82,7 @@
   }
 
   a:hover {
-    @apply text-foreground/80;
+    @apply text-foreground;
   }
 
   .gradient-dark a {
@@ -102,33 +102,45 @@
 }
 
 /* ── GLOBAL CONTRAST ENFORCEMENT ─────────────────────────────────────────
-   WCAG AA requires 4.5:1 contrast ratio.
-   On the magenta site background (#d4198a), white at <85% opacity fails AA.
-   These overrides replace all faded white/accent variants with solid white.
-   This applies across ALL backgrounds — solid white on dark is also fine.
+   WCAG AA minimum: 4.5:1 contrast ratio for normal text.
+   On magenta (#d4198a) bg, ANY white below ~88% opacity fails AA.
+   On gradient-dark (#1a001f) bg, white below ~35% opacity fails AA.
+   These !important overrides act as a safety net across ALL backgrounds.
+   Solid white on dark (21:1) and solid white on magenta (6.2:1) both pass AA.
    ──────────────────────────────────────────────────────────────────────── */
 
-/* Replace faded foreground text with solid white */
+/* foreground opacity variants → solid white */
+.text-foreground\/30 { color: #ffffff !important; }
+.text-foreground\/40 { color: #ffffff !important; }
 .text-foreground\/50 { color: #ffffff !important; }
+.text-foreground\/55 { color: #ffffff !important; }
 .text-foreground\/60 { color: #ffffff !important; }
 .text-foreground\/70 { color: #ffffff !important; }
+.text-foreground\/75 { color: #ffffff !important; }
 .text-foreground\/80 { color: #ffffff !important; }
+.text-foreground\/85 { color: #ffffff !important; }
+.text-foreground\/90 { color: #ffffff !important; }
 
-/* Replace faded white text with solid white */
+/* white opacity variants → solid white */
+.text-white\/30 { color: #ffffff !important; }
+.text-white\/40 { color: #ffffff !important; }
 .text-white\/50 { color: #ffffff !important; }
 .text-white\/60 { color: #ffffff !important; }
 .text-white\/70 { color: #ffffff !important; }
+.text-white\/75 { color: #ffffff !important; }
 .text-white\/80 { color: #ffffff !important; }
+.text-white\/85 { color: #ffffff !important; }
+.text-white\/90 { color: #ffffff !important; }
 
-/* Replace faded accent (bright pink) on pink background with white */
-/* accent on pink (#d4198a bg vs hsl(336,99%,67%) text) has ~1.3:1 ratio — fails */
+/* accent opacity variants → solid white */
+.text-accent\/40 { color: #ffffff !important; }
+.text-accent\/50 { color: #ffffff !important; }
 .text-accent\/60 { color: #ffffff !important; }
 .text-accent\/70 { color: #ffffff !important; }
 .text-accent\/80 { color: #ffffff !important; }
 
-/* Replace text-accent (bright pink) with white when on pink/magenta sections.
-   On white cards, text-accent is overridden by inline styles anyway.
-   This blanket override ensures sections without white bg are readable. */
+/* text-accent bare class → solid white (bright pink on pink = 1.3:1, fails AA)
+   On white cards, color is always set via inline styles, so this is safe. */
 .text-accent {
   color: #ffffff !important;
 }

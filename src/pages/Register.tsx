@@ -19,7 +19,7 @@ const Register = () => {
 
         {/* Header */}
         <div className="text-center mb-10 animate-fade-in-up">
-          <p className="text-white/70 text-xs uppercase tracking-widest mb-3">E-Woman Conference 2026</p>
+          <p className="text-white text-xs uppercase tracking-widest mb-3">E-Woman Conference 2026</p>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
             Secure Your Seat
           </h1>
@@ -37,12 +37,12 @@ const Register = () => {
             style={{ background: "linear-gradient(90deg, #d4198a 0%, #c0157c 100%)" }}
           >
             <h2 className="font-display text-xl font-bold">E-Woman Conference 2026</h2>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-white/90 text-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-white text-sm">
               <span className="flex items-center gap-1.5">
                 <Calendar size={14} className="flex-shrink-0" />
                 March 13–14, 2026
               </span>
-              <span className="hidden sm:inline text-white/40">•</span>
+              <span className="hidden sm:inline text-white">•</span>
               <span className="flex items-center gap-1.5">
                 <MapPin size={14} className="flex-shrink-0" />
                 Hilton Hotel – Yaoundé

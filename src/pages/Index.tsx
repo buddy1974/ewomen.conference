@@ -162,7 +162,7 @@ const Index = () => {
           <p className="reveal reveal-delay-1 text-white max-w-xl mx-auto mb-2">
             Spaces are limited. Secure your seat at {c.site.name}.
           </p>
-          <p className="reveal reveal-delay-1 text-white/90 text-sm mb-4">
+          <p className="reveal reveal-delay-1 text-white text-sm mb-4">
             Limited seating available. Early registration strongly advised.
           </p>
           <p className="reveal reveal-delay-2 text-white font-bold text-xl mb-8">
