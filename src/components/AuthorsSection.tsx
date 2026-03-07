@@ -35,6 +35,12 @@ const testimonials = [
     image: "/images/writers/book6.jpg",
     text: "Every workshop, every word, every moment was intentional. I left E-Woman with a vision board in my heart and a fire in my spirit that has not gone out.",
   },
+  {
+    id: 7,
+    name: "Eleanor F.",
+    image: "/images/writers/book-7.jpg",
+    text: "The E-Woman movement helped me discover purpose, courage, and the strength to lead other women.",
+  },
 ];
 
 const AuthorsSection = () => {
