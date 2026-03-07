@@ -1,250 +1,146 @@
-import { useState } from "react";
-import { X, ChevronLeft, ChevronRight, Images } from "lucide-react";
-import { delawareImages, yaoundeImages } from "virtual:gallery-manifest";
+import { Link } from "react-router-dom";
+import { Images } from "lucide-react";
+import { galleryAlbums } from "virtual:gallery-manifest";
 
-// ── Contextual alt tags cycling through descriptive phrases ────────────────
-const DELAWARE_ALTS = [
-  "Women leadership session at E-Woman Conference Delaware",
-  "E-Woman Conference Delaware — women rising in purpose",
-  "Networking moment at E-Woman Conference Delaware",
-  "Speaker delivering insight at E-Woman Conference Delaware",
-  "E-Woman Conference Delaware — spiritual empowerment session",
-  "Women connecting at E-Woman Conference Delaware",
-  "E-Woman Conference Delaware — transformational gathering",
-  "Women of faith at E-Woman Conference Delaware",
-  "E-Woman Conference Delaware — community of women leaders",
-  "Celebration and sisterhood at E-Woman Conference Delaware",
-];
+// ── Album metadata ─────────────────────────────────────────────────────────
+// Maps folder slugs → display city name and country code for the title card.
+// Add entries here as new editions are added.
+const CITY_META: Record<string, { display: string; country: string }> = {
+  delaware: { display: "Delaware", country: "USA" },
+  yaounde:  { display: "Yaoundé",  country: "Cameroon" },
+  lagos:    { display: "Lagos",    country: "Nigeria" },
+  nairobi:  { display: "Nairobi",  country: "Kenya" },
+};
 
-const YAOUNDE_ALTS = [
-  "E-Woman Conference Yaoundé — women leadership session",
-  "Speaker on stage at E-Woman Conference Yaoundé",
-  "Women networking at E-Woman Conference Yaoundé",
-  "E-Woman Conference Yaoundé — spiritual empowerment moment",
-  "Women of purpose at E-Woman Conference Yaoundé",
-  "E-Woman Conference Yaoundé — conference participants",
-  "E-Woman Conference Yaoundé — sisterhood and connection",
-  "Transformational session at E-Woman Conference Yaoundé",
-  "E-Woman Conference Yaoundé — women rising in identity",
-  "E-Woman Conference Yaoundé — leadership and faith gathering",
-];
+/** Convert a folder slug into a human-readable album title.
+ *
+ * Rules:
+ *  • `delaware`        → E-Woman Conference 2025 — Delaware, USA
+ *  • `yaounde`         → E-Woman Conference 2025 — Yaoundé, Cameroon
+ *  • `2026-yaounde`    → E-Woman Conference 2026 — Yaoundé, Cameroon
+ *  • `2027-lagos`      → E-Woman Conference 2027 — Lagos, Nigeria
+ */
+export const formatAlbumTitle = (slug: string): string => {
+  const yearMatch = slug.match(/^(\d{4})-(.+)$/);
+  if (yearMatch) {
+    const [, year, city] = yearMatch;
+    const meta = CITY_META[city];
+    const cityLabel = meta ? `${meta.display}, ${meta.country}` : capitalize(city);
+    return `E-Woman Conference ${year} — ${cityLabel}`;
+  }
+  // Legacy slugs without year prefix → treat as 2025 edition
+  const meta = CITY_META[slug];
+  if (meta) return `E-Woman Conference 2025 — ${meta.display}, ${meta.country}`;
+  return `E-Woman Conference 2025 — ${capitalize(slug)}`;
+};
 
-const getAlt = (alts: string[], index: number) => alts[index % alts.length];
+/** Short card description shown under the album title. */
+export const formatAlbumDescription = (slug: string): string => {
+  const yearMatch = slug.match(/^(\d{4})-(.+)$/);
+  const city = yearMatch ? yearMatch[2] : slug;
+  const meta = CITY_META[city];
+  const cityLabel = meta ? meta.display : capitalize(city);
+  return `Moments from the ${cityLabel} edition of the E-Woman Conference.`;
+};
 
-// ── Lightbox ──────────────────────────────────────────────────────────────
-interface LightboxProps {
-  images: string[];
-  alts: string[];
-  index: number;
-  onClose: () => void;
-  onPrev: () => void;
-  onNext: () => void;
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+// ── Album card ─────────────────────────────────────────────────────────────
+interface AlbumCardProps {
+  slug: string;
+  leadImage: string | undefined;
+  title: string;
+  description: string;
 }
 
-const Lightbox = ({ images, alts, index, onClose, onPrev, onNext }: LightboxProps) => (
-  <div
-    className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
-    onClick={onClose}
-  >
-    <button onClick={onClose} className="absolute top-4 right-4 p-2 text-white">
-      <X size={28} />
-    </button>
-    <button
-      className="absolute left-3 md:left-6 p-2 text-white"
-      onClick={(e) => { e.stopPropagation(); onPrev(); }}
-    >
-      <ChevronLeft size={36} />
-    </button>
-    <img
-      src={images[index]}
-      alt={alts[index]}
-      className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl"
-      onClick={(e) => e.stopPropagation()}
-    />
-    <button
-      className="absolute right-3 md:right-6 p-2 text-white"
-      onClick={(e) => { e.stopPropagation(); onNext(); }}
-    >
-      <ChevronRight size={36} />
-    </button>
-    <p className="absolute bottom-4 text-center text-sm text-white/80 px-4">
-      {alts[index]} &nbsp;·&nbsp; {index + 1} / {images.length}
-    </p>
-  </div>
-);
-
-// ── Gallery section ───────────────────────────────────────────────────────
-const PAGE_SIZE = 24;
-
-interface GallerySectionProps {
-  images: string[];
-  altList: string[];
-  label: string;
-}
-
-const GallerySection = ({ images, altList, label }: GallerySectionProps) => {
-  const [visible, setVisible] = useState(PAGE_SIZE);
-  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
-
-  const shown = images.slice(0, visible);
-  const alts = images.map((_, i) => getAlt(altList, i));
-
-  return (
-    <div>
-      {/* Thumbnail grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-        {shown.map((src, i) => (
-          <button
-            key={src}
-            onClick={() => setLightboxIdx(i)}
-            className="aspect-square rounded-xl overflow-hidden group relative focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#d4198a]"
-            aria-label={`Open: ${alts[i]}`}
-          >
-            <img
-              src={src}
-              alt={alts[i]}
-              loading="lazy"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
-              <span className="text-white text-xs font-medium leading-snug line-clamp-2">
-                {alts[i]}
-              </span>
-            </div>
-          </button>
-        ))}
-      </div>
-
-      {/* Load More */}
-      {visible < images.length && (
-        <div className="text-center mt-8">
-          <button
-            onClick={() => setVisible((v) => Math.min(v + PAGE_SIZE, images.length))}
-            className="px-8 py-3 rounded-full font-semibold text-sm text-white transition-transform hover:scale-105"
-            style={{ backgroundColor: "#d4198a" }}
-          >
-            Load More — {images.length - visible} remaining
-          </button>
-        </div>
-      )}
-
-      {/* Lightbox */}
-      {lightboxIdx !== null && (
-        <Lightbox
-          images={images}
-          alts={alts}
-          index={lightboxIdx}
-          onClose={() => setLightboxIdx(null)}
-          onPrev={() => setLightboxIdx((i) => ((i ?? 0) - 1 + images.length) % images.length)}
-          onNext={() => setLightboxIdx((i) => ((i ?? 0) + 1) % images.length)}
+const AlbumCard = ({ slug, leadImage, title, description }: AlbumCardProps) => (
+  <div className="rounded-2xl overflow-hidden shadow-xl flex flex-col" style={{ background: "rgba(255,255,255,0.06)" }}>
+    {/* Lead image */}
+    <div className="aspect-[4/3] overflow-hidden bg-black/30">
+      {leadImage ? (
+        <img
+          src={leadImage}
+          alt={title}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
         />
-      )}
-
-      {images.length === 0 && (
-        <div className="text-center py-16 text-white/50">
-          <Images size={48} className="mx-auto mb-4 opacity-30" />
-          <p>No images available for {label} yet.</p>
+      ) : (
+        <div className="w-full h-full flex items-center justify-center">
+          <Images size={48} className="text-white/20" />
         </div>
       )}
     </div>
-  );
-};
 
-// ── Page ─────────────────────────────────────────────────────────────────
+    {/* Info */}
+    <div className="p-6 flex flex-col flex-1">
+      <h2 className="font-display text-xl sm:text-2xl font-bold text-white mb-2 leading-snug">
+        {title}
+      </h2>
+      <p className="text-white/75 text-sm leading-relaxed flex-1 mb-6">
+        {description}
+      </p>
+      <Link
+        to={`/gallery/${slug}`}
+        className="inline-block self-start px-6 py-2.5 rounded-full font-semibold text-sm text-white transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+        style={{ backgroundColor: "#d4198a" }}
+      >
+        View Gallery
+      </Link>
+    </div>
+  </div>
+);
+
+// ── Page ──────────────────────────────────────────────────────────────────
 const Gallery = () => (
   <div>
     {/* Hero */}
     <section className="py-20 gradient-dark">
       <div className="container px-4 text-center">
         <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#e0c55d" }}>
-          Conference History
+          Archives
         </p>
         <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4 text-white">
-          Gallery
+          Conference History Gallery
         </h1>
         <div className="gold-divider" />
-        <p className="text-white/85 max-w-2xl mx-auto mt-4">
-          Real moments from real women. A visual record of the E-Woman movement in action.
+        <p className="text-white/80 max-w-2xl mx-auto mt-4 text-base leading-relaxed">
+          Moments from previous E-Woman Conferences across different cities and nations.
         </p>
       </div>
     </section>
 
-    {/* ── DELAWARE EDITION ─────────────────────────────────────────────── */}
-    <section className="py-20 bg-background">
-      <div className="container px-4">
-
-        {/* Story */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#e0c55d" }}>
-            United States
-          </p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
-            E-Woman Conference — Delaware Edition
-          </h2>
-          <div className="gold-divider mb-6" />
-          <div className="space-y-4 text-white/85 text-base leading-relaxed text-left">
-            <p>
-              The Delaware gathering of the E-Woman movement brought together women leaders, entrepreneurs,
-              and visionaries committed to personal transformation and kingdom impact.
-            </p>
-            <p>
-              Throughout the conference, participants experienced powerful leadership sessions, meaningful
-              networking moments, and spiritual empowerment that continues to shape the E-Woman community today.
-            </p>
-            <p>
-              These moments captured below reflect the spirit of the conference — women rising, connecting,
-              and stepping boldly into their purpose.
-            </p>
-          </div>
-          <p className="mt-4 text-white/50 text-sm">
-            {delawareImages.length} photographs
-          </p>
-        </div>
-
-        <GallerySection
-          images={delawareImages}
-          altList={DELAWARE_ALTS}
-          label="Delaware"
-        />
+    {/* Description */}
+    <section className="py-10 gradient-dark border-t border-white/10">
+      <div className="container px-4 max-w-3xl mx-auto text-center">
+        <p className="text-white/75 text-base leading-relaxed">
+          These images are from the 2025 edition of the E-Woman Conference.
+          Each year the movement gathers women for leadership, empowerment, and spiritual alignment.
+          This gallery preserves moments from previous editions as we prepare for the upcoming conference.
+        </p>
       </div>
     </section>
 
-    {/* ── YAOUNDÉ GATHERING ────────────────────────────────────────────── */}
-    <section className="py-20" style={{ background: "hsl(329,70%,10%)" }}>
+    {/* Album grid */}
+    <section className="py-20 bg-background">
       <div className="container px-4">
-
-        {/* Story */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#e0c55d" }}>
-            Cameroon
-          </p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
-            E-Woman Conference — Yaoundé Gathering
-          </h2>
-          <div className="gold-divider mb-6" />
-          <div className="space-y-4 text-white/85 text-base leading-relaxed text-left">
-            <p>
-              The Yaoundé edition of the E-Woman Conference welcomed women from across Cameroon and
-              international destinations.
-            </p>
-            <p>
-              For two days the conference hall became a space of empowerment, leadership growth, spiritual
-              alignment, and meaningful sisterhood.
-            </p>
-            <p>
-              These images capture powerful moments of transformation that define the E-Woman experience.
-            </p>
+        {galleryAlbums.length === 0 ? (
+          <div className="text-center py-20 text-white/50">
+            <Images size={48} className="mx-auto mb-4 opacity-30" />
+            <p>No albums available yet.</p>
           </div>
-          <p className="mt-4 text-white/50 text-sm">
-            {yaoundeImages.length} photographs
-          </p>
-        </div>
-
-        <GallerySection
-          images={yaoundeImages}
-          altList={YAOUNDE_ALTS}
-          label="Yaoundé"
-        />
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {galleryAlbums.map((album) => (
+              <AlbumCard
+                key={album.slug}
+                slug={album.slug}
+                leadImage={album.images[0]}
+                title={formatAlbumTitle(album.slug)}
+                description={formatAlbumDescription(album.slug)}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   </div>

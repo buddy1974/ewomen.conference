@@ -4,8 +4,9 @@ import path from "path";
 import fs from "fs";
 
 // ── Gallery manifest plugin ────────────────────────────────────────────────
-// Reads public/images/gallery/{delaware,yaounde} at build time and exposes
-// a virtual module so the gallery page never hardcodes filenames.
+// Scans ALL subdirectories under public/images/gallery/ at build time and
+// exposes a virtual module so the gallery page never hardcodes filenames.
+// Adding a new edition is as simple as dropping a new folder under gallery/.
 function galleryManifestPlugin(): Plugin {
   const VIRTUAL_ID = "virtual:gallery-manifest";
   const RESOLVED_ID = "\0" + VIRTUAL_ID;
@@ -28,6 +29,16 @@ function galleryManifestPlugin(): Plugin {
       .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }));
   };
 
+  const readAlbums = () => {
+    const galleryDir = path.resolve(__dirname, "public/images/gallery");
+    if (!fs.existsSync(galleryDir)) return [];
+    return fs
+      .readdirSync(galleryDir, { withFileTypes: true })
+      .filter((e) => e.isDirectory())
+      .map((e) => ({ slug: e.name, images: readImages(e.name) }))
+      .sort((a, b) => a.slug.localeCompare(b.slug, undefined, { numeric: true }));
+  };
+
   return {
     name: "gallery-manifest",
     resolveId(id) {
@@ -35,12 +46,8 @@ function galleryManifestPlugin(): Plugin {
     },
     load(id) {
       if (id !== RESOLVED_ID) return;
-      const delaware = readImages("delaware");
-      const yaounde = readImages("yaounde");
-      return [
-        `export const delawareImages = ${JSON.stringify(delaware)};`,
-        `export const yaoundeImages = ${JSON.stringify(yaounde)};`,
-      ].join("\n");
+      const albums = readAlbums();
+      return `export const galleryAlbums = ${JSON.stringify(albums)};`;
     },
   };
 }

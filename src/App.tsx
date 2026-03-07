@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import Speakers from "./pages/Speakers";
 import SpeakerDetail from "./pages/SpeakerDetail";
 import Gallery from "./pages/Gallery";
+import GalleryAlbum from "./pages/GalleryAlbum";
 import Schedule from "./pages/Schedule";
 import Press from "./pages/Press";
 import Register from "./pages/Register";
@@ -39,6 +40,7 @@ const App = () => (
               <Route path="/speakers" element={<Speakers />} />
               <Route path="/speakers/:slug" element={<SpeakerDetail />} />
               <Route path="/gallery" element={<Gallery />} />
+              <Route path="/gallery/:album" element={<GalleryAlbum />} />
               <Route path="/schedule" element={<Schedule />} />
               <Route path="/press" element={<Press />} />
               <Route path="/media" element={<Media />} />
