@@ -6,12 +6,6 @@ export const books: never[] = [];
 
 const testimonials = [
   {
-    id: 1,
-    name: "Amina K.",
-    image: "/images/writers/book-1.jpg",
-    text: "After attending E-Woman, I gained clarity, confidence, and direction for the next level of my life. The experience helped me step into my purpose with boldness.",
-  },
-  {
     id: 2,
     name: "Christelle N.",
     image: "/images/writers/book-2.jpg",
