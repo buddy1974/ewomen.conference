@@ -17,6 +17,8 @@ import Register from "./pages/Register";
 import AuthorDetail from "./pages/AuthorDetail";
 import Media from "./pages/Media";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import Evaluation from "./pages/Evaluation";
+import EvaluationQR from "./pages/EvaluationQR";
 import NotFound from "./pages/NotFound";
 
 // Heavy event-operations pages — lazy-loaded to keep main bundle small
@@ -47,6 +49,8 @@ const App = () => (
               <Route path="/authors/:slug" element={<AuthorDetail />} />
               <Route path="/register" element={<Register />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
+              <Route path="/evaluation" element={<Evaluation />} />
+              <Route path="/evaluation-qr" element={<EvaluationQR />} />
               <Route path="/checkin" element={<CheckIn />} />
               <Route path="/ticket/:reference" element={<Ticket />} />
               <Route path="/admin" element={<AdminDashboard />} />

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Mic, BookOpen, Users, Sparkles, LayoutList, Package, Quote } from "lucide-react";
+import { ArrowRight, Mic, BookOpen, Users, Sparkles, LayoutList, Package, Quote, ClipboardList } from "lucide-react";
 
 const BADGE_KEYWORDS = ["Author", "Pastor", "Apostle", "Coach", "Mentor", "Entrepreneur", "Speaker", "Minister", "Leader", "Prophet"];
 const getSpeakerBadge = (title: string): string => {
@@ -49,23 +49,23 @@ const Index = () => {
   return (
     <div>
 
-      {/* ── URGENCY BANNER ──────────────────────────────────────────────────── */}
+      {/* ── POST-EVENT BANNER ───────────────────────────────────────────────── */}
       <div
         className="text-center text-sm font-medium text-white"
         style={{ background: "#1a001f", padding: "8px 16px" }}
       >
-        Early Registration Now Open — Secure Your Seat Today
+        E-Woman Conference 2026 has successfully concluded — Thank you to all who attended!
       </div>
 
       {/* HERO — fullscreen fade slider */}
       <HeroSlider />
 
-      {/* ── PART 3: SEATS FILLING BANNER ────────────────────────────────────── */}
+      {/* ── POST-EVENT NOTICE BANNER ─────────────────────────────────────────── */}
       <div
         className="text-center text-sm font-semibold px-4 py-3"
         style={{ background: "#e0c55d", color: "#1a001f" }}
       >
-        Seats are filling quickly for E-Woman Conference 2026. Early registration is strongly advised.
+        Thank you to all participants, speakers, partners & volunteers. Stay connected for the next edition.
       </div>
 
       {/* TRUST STRIP */}
@@ -486,37 +486,51 @@ const Index = () => {
       <section className="py-24 gradient-dark">
         <div className="container px-4 text-center max-w-2xl mx-auto">
           <p className="reveal text-xs uppercase tracking-[0.25em] font-semibold mb-4" style={{ color: "#e0c55d" }}>
-            Limited Seats Available
+            Conference Concluded
           </p>
           <h2 className="reveal font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
-            Secure Your Seat at E-Woman Conference 2026
+            E-Woman Conference 2026
           </h2>
           <div className="gold-divider mb-6" />
           <p className="reveal reveal-delay-1 text-white/90 text-base leading-relaxed mb-3">
-            Join women from across Cameroon and international destinations for two powerful days of
-            leadership, empowerment, and transformation.
+            Thank you to all the guests who attended the conference.
+            We appreciate your participation and support.
           </p>
-          <p className="reveal reveal-delay-1 text-white font-semibold mb-2">
-            March 13 – 14
+          <p className="reveal reveal-delay-1 text-white font-semibold mb-1">
+            March 13 – 14, 2026
           </p>
-          <p className="reveal reveal-delay-1 text-white mb-6">
-            Hilton Hotel — Yaoundé
+          <p className="reveal reveal-delay-1 text-white/80 mb-8">
+            Hilton Hotel — Yaoundé, Cameroon
           </p>
-          <p className="reveal reveal-delay-2 text-white font-bold text-xl mb-8">
-            {c.site.registrationFee}
-          </p>
+
+          {/* Evaluation CTA — primary */}
           <Link
-            to="/register"
+            to="/evaluation"
             className="reveal reveal-delay-3 inline-flex items-center justify-center gap-2 bg-white px-10 py-4 rounded-full font-bold text-lg shadow-lg transition-all duration-200 hover:scale-105"
             style={{ color: "#d4198a" }}
           >
-            Register Now <ArrowRight size={18} />
+            <ClipboardList size={20} />
+            Conference Evaluation
           </Link>
 
-          {/* Part 5 — Social Proof Line */}
+          {/* Secondary CTAs */}
+          <div className="reveal reveal-delay-3 flex flex-wrap justify-center gap-3 mt-4">
+            <Link
+              to="/gallery"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white/50 text-white px-6 py-3 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-white/10 hover:border-white"
+            >
+              View Gallery <ArrowRight size={16} />
+            </Link>
+            <Link
+              to="/media"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white/50 text-white px-6 py-3 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-white/10 hover:border-white"
+            >
+              Media <ArrowRight size={16} />
+            </Link>
+          </div>
+
           <p className="reveal reveal-delay-3 mt-8 text-white/70 text-sm leading-relaxed">
-            Hundreds of women have already experienced the E-Woman movement.
-            <br />Now it is your turn.
+            Stay connected for announcements about the next edition.
           </p>
         </div>
       </section>
@@ -524,21 +538,22 @@ const Index = () => {
       {/* ── REGISTRATION ACTIVITY NOTIFICATION ──────────────────────────────── */}
       <RegistrationActivity />
 
-      {/* MOBILE STICKY REGISTER */}
+      {/* MOBILE STICKY EVALUATION */}
       <div className="fixed bottom-0 left-0 right-0 md:hidden bg-black/90 backdrop-blur-md border-t border-white/10 p-4 z-50">
         <Link
-          to="/register"
-          className="block w-full text-center bg-white py-3 rounded-full font-semibold text-lg shadow-lg"
+          to="/evaluation"
+          className="flex items-center justify-center gap-2 w-full text-center bg-white py-3 rounded-full font-semibold text-base shadow-lg"
           style={{ color: "#d4198a" }}
         >
-          Secure Your Seat – 50,000 FCFA
+          <ClipboardList size={17} />
+          Fill Evaluation Form
         </Link>
       </div>
 
-      {/* ── SCROLL-TRIGGERED STICKY REGISTER (desktop) ──────────────────────── */}
+      {/* ── SCROLL-TRIGGERED STICKY EVALUATION (desktop) ─────────────────────── */}
       {showSticky && (
         <Link
-          to="/register"
+          to="/evaluation"
           className="hidden md:flex fixed items-center gap-2 text-white font-semibold text-sm z-50 transition-all duration-300"
           style={{
             bottom: 20,
@@ -549,7 +564,8 @@ const Index = () => {
             boxShadow: "0 6px 24px rgba(0,0,0,0.25)",
           }}
         >
-          Register Now
+          <ClipboardList size={16} />
+          Fill Evaluation
         </Link>
       )}
 

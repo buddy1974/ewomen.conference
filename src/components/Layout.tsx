@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Schedule", href: "/schedule" },
   { label: "Gallery", href: "/gallery" },
   { label: "Media", href: "/media" },
+  { label: "Evaluation", href: "/evaluation" },
   { label: "Register", href: "/register" },
 ];
 
@@ -177,6 +178,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   { label: "Gallery", href: "/gallery" },
                   { label: "Media", href: "/media" },
                   { label: "Register", href: "/register" },
+                  { label: "Conference Evaluation", href: "/evaluation" },
                 ].map((link) => (
                   <li key={link.href}>
                     <Link to={link.href} className="text-sm text-white hover:text-white transition">

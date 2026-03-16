@@ -12,8 +12,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, Users } from "lucide-react";
-import CountdownTimer from "@/components/CountdownTimer";
+import { Calendar, MapPin, Users, ClipboardList, Images } from "lucide-react";
 import RegistrationCounter from "@/components/RegistrationCounter";
 import { trackEvent } from "@/lib/analytics";
 
@@ -116,28 +115,14 @@ export default function HeroSlider() {
 
         {/* Subtitle */}
         <p
-          className="font-display text-xl md:text-2xl italic text-white mb-8 max-w-2xl mx-auto leading-relaxed"
+          className="font-display text-xl md:text-2xl italic text-white mb-10 max-w-2xl mx-auto leading-relaxed"
           style={{ textShadow: "0 2px 8px rgba(26,0,31,0.6)" }}
         >
           Redefining Empowerment, One Woman at a Time.
         </p>
 
-        {/* Countdown Timer */}
-        <div className="mb-8">
-          <p className="text-white text-xs uppercase tracking-widest mb-4 font-semibold">
-            Event Starts In
-          </p>
-          <CountdownTimer targetDate="2026-03-13T00:00:00" />
-          <p className="text-white text-xs mt-3 font-medium">
-            The conference begins soon.
-          </p>
-          <p className="text-white text-xs mt-1 font-medium">
-            Register today to confirm your participation.
-          </p>
-        </div>
-
-        {/* ── Floating Event Card ──────────────────────────────────────────── */}
-        <div className="mx-auto w-full" style={{ maxWidth: 420 }}>
+        {/* ── Post-Event Thank You Card ──────────────────────────────────────── */}
+        <div className="mx-auto w-full" style={{ maxWidth: 440 }}>
           <div
             style={{
               background: "rgba(255,255,255,0.96)",
@@ -147,68 +132,74 @@ export default function HeroSlider() {
               textAlign: "center",
             }}
           >
-            {/* Card title */}
+            {/* Completed badge */}
+            <span
+              className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4"
+              style={{ background: "rgba(212,25,138,0.10)", color: "#d4198a" }}
+            >
+              Conference Completed
+            </span>
+
             <h2
               className="font-display font-bold mb-1"
-              style={{ fontSize: 26, color: "#1a001f" }}
+              style={{ fontSize: 24, color: "#1a001f" }}
             >
-              E-Woman Conference 2026
+              Thank You for Attending
             </h2>
 
-            {/* Gold rule */}
-            <div className="gold-divider mb-5" />
+            <div className="gold-divider mb-4" />
 
-            {/* Event details */}
-            <ul className="space-y-3 mb-5">
+            <ul className="space-y-2 mb-5">
               <li className="flex items-center justify-center gap-2">
-                <Calendar size={15} style={{ color: "#d4198a", flexShrink: 0 }} />
-                <span style={{ fontSize: 14, color: "#4a4a4a" }}>March 13–14, 2026</span>
+                <Calendar size={14} style={{ color: "#d4198a", flexShrink: 0 }} />
+                <span style={{ fontSize: 13, color: "#4a4a4a" }}>March 13–14, 2026 — Yaoundé</span>
               </li>
               <li className="flex items-center justify-center gap-2">
-                <MapPin size={15} style={{ color: "#d4198a", flexShrink: 0 }} />
-                <span style={{ fontSize: 14, color: "#4a4a4a" }}>Hilton Hotel – Yaoundé</span>
-              </li>
-              <li className="flex items-center justify-center gap-2">
-                <Users size={15} style={{ color: "#d4198a", flexShrink: 0 }} />
-                <span style={{ fontSize: 14, fontWeight: 600, color: "#d4198a" }}>
-                  500+ Women Expected
+                <Users size={14} style={{ color: "#d4198a", flexShrink: 0 }} />
+                <span style={{ fontSize: 13, fontWeight: 600, color: "#d4198a" }}>
+                  500+ Women Impacted
                 </span>
               </li>
             </ul>
 
-            {/* Price line */}
-            <p className="mb-5" style={{ fontSize: 14, color: "#6b7280" }}>
-              Conference Pass —{" "}
-              <span style={{ color: "#1a001f", fontWeight: 700 }}>50,000 FCFA</span>
+            <p style={{ fontSize: 13, color: "#6b7280", marginBottom: 20, lineHeight: 1.6 }}>
+              We thank all guests, speakers, partners, and volunteers who made this conference a success.
             </p>
 
-            {/* CTA button */}
-            <Link
-              to="/register"
-              className="block w-full text-center text-white font-semibold transition-all duration-200"
-              style={{
-                backgroundColor: "#d4198a",
-                padding: "14px 26px",
-                borderRadius: 999,
-                fontSize: 15,
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "#c0157c";
-                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-1px)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "#d4198a";
-                (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
-              }}
-              onClick={() => trackEvent("hero_cta_click")}
-            >
-              Secure Your Seat
-            </Link>
+            {/* CTAs */}
+            <div className="flex flex-col gap-3">
+              <Link
+                to="/evaluation"
+                className="flex items-center justify-center gap-2 w-full text-white font-semibold transition-all duration-200"
+                style={{
+                  backgroundColor: "#d4198a",
+                  padding: "13px 26px",
+                  borderRadius: 999,
+                  fontSize: 14,
+                }}
+                onClick={() => trackEvent("hero_cta_click")}
+              >
+                <ClipboardList size={16} />
+                Share Your Feedback
+              </Link>
+              <Link
+                to="/gallery"
+                className="flex items-center justify-center gap-2 w-full font-semibold transition-all duration-200"
+                style={{
+                  backgroundColor: "transparent",
+                  border: "2px solid #d4198a",
+                  color: "#d4198a",
+                  padding: "11px 26px",
+                  borderRadius: 999,
+                  fontSize: 14,
+                }}
+              >
+                <Images size={16} />
+                View Gallery
+              </Link>
+            </div>
           </div>
         </div>
-
-        {/* Registration counter */}
-        <RegistrationCounter />
       </div>
 
       {/* ── Dot indicators ──────────────────────────────────────────────────── */}

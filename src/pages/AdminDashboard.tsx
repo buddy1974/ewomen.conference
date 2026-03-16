@@ -1,7 +1,61 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Users, Clock, AlertTriangle, RefreshCw, Trash2, Download, Lock } from "lucide-react";
+import { Users, Clock, AlertTriangle, RefreshCw, Trash2, Download, Lock, ClipboardList } from "lucide-react";
 import { getCheckIns, clearCheckIns, type CheckInRecord } from "@/lib/checkin";
+
+// ── Evaluation helpers ────────────────────────────────────────────────────────
+import { supabase } from "@/lib/supabase";
+
+interface EvaluationResponse {
+  id: string;
+  created_at: string;
+  q1_content_relevant: number | null;
+  q2_speaker_quality: number | null;
+  q3_positive_environment: number | null;
+  q4_well_organized: number | null;
+  q5_learned_something: number | null;
+  q6_best_session: string | null;
+  q7_needs_improvement: string | null;
+  r1_venue: string | null;
+  r2_food: string | null;
+  r3_networking: string | null;
+  r4_coordination: string | null;
+  q9_topics: string | null;
+  q10_recommend: string | null;
+  q11_one_word: string | null;
+  q12_comments: string | null;
+}
+
+const exportEvaluationsCSV = (rows: EvaluationResponse[]) => {
+  const headers = [
+    "ID","Submitted","ContentRelevant","SpeakerQuality","PositiveEnv","WellOrg","LearnedSomething",
+    "BestSession","NeedsImprovement","Venue","Food","Networking","Coordination",
+    "Topics","Recommend","OneWord","Comments",
+  ];
+  const escape = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+  const lines = rows.map((r) =>
+    [r.id, r.created_at, r.q1_content_relevant, r.q2_speaker_quality,
+     r.q3_positive_environment, r.q4_well_organized, r.q5_learned_something,
+     r.q6_best_session, r.q7_needs_improvement,
+     r.r1_venue, r.r2_food, r.r3_networking, r.r4_coordination,
+     r.q9_topics, r.q10_recommend, r.q11_one_word, r.q12_comments]
+      .map(escape).join(",")
+  );
+  const csv = [headers.join(","), ...lines].join("\n");
+  const blob = new Blob([csv], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "ewoman-evaluations.csv";
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
+const avg = (rows: EvaluationResponse[], key: keyof EvaluationResponse) => {
+  const vals = rows.map((r) => r[key]).filter((v) => typeof v === "number") as number[];
+  if (!vals.length) return "—";
+  return (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(1);
+};
 
 // ── Access guard ─────────────────────────────────────────────────────────────
 const STAFF_KEY = "ewoman2026";
@@ -49,10 +103,16 @@ const AdminDashboard = () => {
   if (key !== STAFF_KEY) return <AccessRestricted />;
 
   const [records, setRecords] = useState<CheckInRecord[]>([]);
+  const [evaluations, setEvaluations] = useState<EvaluationResponse[]>([]);
   const [lastRefresh, setLastRefresh] = useState(new Date());
 
-  const refresh = () => {
+  const refresh = async () => {
     setRecords(getCheckIns());
+    const { data } = await supabase
+      .from("evaluations")
+      .select("*")
+      .order("created_at", { ascending: false });
+    setEvaluations(data ?? []);
     setLastRefresh(new Date());
   };
 
@@ -196,6 +256,96 @@ const AdminDashboard = () => {
                 );
               })}
             </div>
+          )}
+        </div>
+
+        {/* ── Evaluations panel ─────────────────────────────────────────── */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+          <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between flex-wrap gap-3">
+            <h3 className="font-semibold text-sm flex items-center gap-2" style={{ color: "#1a001f" }}>
+              <ClipboardList size={16} style={{ color: "#d4198a" }} />
+              Evaluation Responses
+              <span className="text-xs font-normal text-gray-400">({evaluations.length})</span>
+            </h3>
+            <div className="flex items-center gap-2">
+              <Link
+                to="/evaluation"
+                target="_blank"
+                className="text-xs font-semibold px-3 py-1.5 rounded-full border border-gray-200 hover:bg-gray-50 transition"
+                style={{ color: "#d4198a" }}
+              >
+                Open Form ↗
+              </Link>
+              <button
+                onClick={() => exportEvaluationsCSV(evaluations)}
+                disabled={evaluations.length === 0}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-gray-200 hover:bg-gray-50 transition disabled:opacity-40"
+                style={{ color: "#1a001f" }}
+              >
+                <Download size={12} />
+                Export CSV
+              </button>
+            </div>
+          </div>
+
+          {evaluations.length === 0 ? (
+            <p className="text-center text-sm text-gray-400 py-8">No evaluations submitted yet.</p>
+          ) : (
+            <>
+              {/* Average scores */}
+              <div className="px-6 py-4 bg-gray-50 border-b border-gray-100">
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Average Ratings (out of 5)</p>
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                  {[
+                    { label: "Content", key: "q1_content_relevant" as const },
+                    { label: "Speakers", key: "q2_speaker_quality" as const },
+                    { label: "Environment", key: "q3_positive_environment" as const },
+                    { label: "Organisation", key: "q4_well_organized" as const },
+                    { label: "Learned", key: "q5_learned_something" as const },
+                  ].map(({ label, key }) => (
+                    <div key={key} className="bg-white rounded-xl p-3 text-center shadow-sm">
+                      <p className="font-display text-xl font-bold" style={{ color: "#d4198a" }}>{avg(evaluations, key)}</p>
+                      <p className="text-xs text-gray-400 mt-0.5">{label}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-3 flex flex-wrap gap-2 text-xs text-gray-500">
+                  <span>Recommend Yes: {evaluations.filter((e) => e.q10_recommend === "Yes").length}</span>
+                  <span>·</span>
+                  <span>Maybe: {evaluations.filter((e) => e.q10_recommend === "Maybe").length}</span>
+                  <span>·</span>
+                  <span>No: {evaluations.filter((e) => e.q10_recommend === "No").length}</span>
+                </div>
+              </div>
+
+              {/* Response list */}
+              <div className="divide-y divide-gray-50 max-h-96 overflow-y-auto">
+                {evaluations.map((ev) => (
+                  <div key={ev.id} className="px-6 py-3 space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-xs text-gray-400">{ev.id.slice(0, 8)}…</span>
+                      <span className="text-xs text-gray-400">
+                        {new Date(ev.created_at).toLocaleString([], {
+                          month: "short", day: "numeric",
+                          hour: "2-digit", minute: "2-digit",
+                        })}
+                      </span>
+                    </div>
+                    <div className="flex flex-wrap gap-2 text-xs">
+                      {[ev.q1_content_relevant, ev.q2_speaker_quality, ev.q3_positive_environment, ev.q4_well_organized, ev.q5_learned_something].map((v, i) => (
+                        <span key={i} className="bg-pink-50 text-pink-700 px-2 py-0.5 rounded-full font-semibold">{v ?? "—"}/5</span>
+                      ))}
+                      {ev.q10_recommend && (
+                        <span className="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">{ev.q10_recommend}</span>
+                      )}
+                      {ev.q11_one_word && (
+                        <span className="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full italic">"{ev.q11_one_word}"</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
           )}
         </div>
 
