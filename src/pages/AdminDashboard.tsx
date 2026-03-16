@@ -108,11 +108,13 @@ const AdminDashboard = () => {
 
   const refresh = async () => {
     setRecords(getCheckIns());
-    const { data } = await supabase
-      .from("evaluations")
-      .select("*")
-      .order("created_at", { ascending: false });
-    setEvaluations(data ?? []);
+    if (supabase) {
+      const { data } = await supabase
+        .from("evaluations")
+        .select("*")
+        .order("created_at", { ascending: false });
+      setEvaluations(data ?? []);
+    }
     setLastRefresh(new Date());
   };
 

@@ -174,6 +174,12 @@ const Evaluation = () => {
     setError("");
     setSubmitting(true);
 
+    if (!supabase) {
+      setSubmitting(false);
+      setError("Evaluation service is temporarily unavailable. Please try again later.");
+      return;
+    }
+
     const { error: dbError } = await supabase.from("evaluations").insert([{
       q1_content_relevant: form.q1_content_relevant,
       q2_speaker_quality: form.q2_speaker_quality,
