@@ -118,7 +118,7 @@ export default function HeroSlider() {
           className="font-display text-xl md:text-2xl italic text-white mb-10 max-w-2xl mx-auto leading-relaxed"
           style={{ textShadow: "0 2px 8px rgba(26,0,31,0.6)" }}
         >
-          Redefining Empowerment, One Woman at a Time.
+          Thank you to all the amazing women who attended this powerful event in Yaoundé.
         </p>
 
         {/* ── Post-Event Thank You Card ──────────────────────────────────────── */}

@@ -21,7 +21,7 @@ const Register = () => {
         <div className="text-center mb-10 animate-fade-in-up">
           <p className="text-white text-xs uppercase tracking-widest mb-3">E-Woman Conference 2026</p>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-            Secure Your Seat
+            Register for the Next Edition
           </h1>
           <div className="w-16 h-1 bg-white/40 mx-auto rounded-full" />
         </div>
@@ -107,7 +107,7 @@ const Register = () => {
                 className="inline-flex items-center justify-center gap-2 w-full bg-[#d4198a] hover:bg-[#c0157c] text-white py-5 px-8 rounded-full font-bold text-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
                 onClick={() => trackEvent("register_payunit_click")}
               >
-                Secure Your Seat – Pay 50,000 FCFA
+                Register — Pay 50,000 FCFA
                 <ExternalLink size={18} />
               </a>
 

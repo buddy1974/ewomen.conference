@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Mic, BookOpen, Users, Sparkles, LayoutList, Package, Quote, ClipboardList } from "lucide-react";
+import { ArrowRight, Mic, BookOpen, Users, Sparkles, Quote, ClipboardList, CheckCircle, Heart, Trophy, CalendarCheck } from "lucide-react";
 
 const BADGE_KEYWORDS = ["Author", "Pastor", "Apostle", "Coach", "Mentor", "Entrepreneur", "Speaker", "Minister", "Leader", "Prophet"];
 const getSpeakerBadge = (title: string): string => {
@@ -15,16 +15,15 @@ import TestimonialSlider from "@/components/TestimonialSlider";
 import HeroSlider from "@/components/HeroSlider";
 import AuthorsSection from "@/components/AuthorsSection";
 import VisionariesSection from "@/components/VisionariesSection";
-import RegistrationActivity from "@/components/RegistrationActivity";
 
-// ── What You Get items ────────────────────────────────────────────────────────
-const PASS_INCLUDES = [
-  { icon: <Mic size={22} />, text: "Powerful keynote teachings" },
-  { icon: <BookOpen size={22} />, text: "Leadership & purpose workshops" },
-  { icon: <Users size={22} />, text: "Networking with 500+ women" },
-  { icon: <Sparkles size={22} />, text: "Spiritual empowerment sessions" },
-  { icon: <LayoutList size={22} />, text: "Access to all conference sessions" },
-  { icon: <Package size={22} />, text: "Conference materials & resources" },
+// ── Conference 2026 Highlights ────────────────────────────────────────────────
+const HIGHLIGHTS = [
+  { icon: <Mic size={22} />, text: "Inspiring speakers" },
+  { icon: <Quote size={22} />, text: "Powerful testimonies" },
+  { icon: <Users size={22} />, text: "Networking sessions" },
+  { icon: <BookOpen size={22} />, text: "Leadership workshops" },
+  { icon: <Trophy size={22} />, text: "Awards & recognition" },
+  { icon: <Heart size={22} />, text: "Worship & ministry" },
 ];
 
 // ── Static testimonials ───────────────────────────────────────────────────────
@@ -168,20 +167,27 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── WHAT YOUR PASS INCLUDES ─────────────────────────────────────────── */}
+      {/* ── SUCCESS HIGHLIGHTS ───────────────────────────────────────────────── */}
       <section className="py-20 bg-background">
         <div className="container px-4">
-          <h2 className="reveal font-display text-3xl sm:text-4xl font-bold text-center text-white mb-3">
-            What Your Conference Pass Includes
-          </h2>
-          <p className="reveal reveal-delay-1 text-center text-white mb-12 max-w-xl mx-auto">
-            Your 50,000 FCFA ticket gives you full access to a transformational two-day experience.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-            {PASS_INCLUDES.map((item, i) => (
+          <div className="text-center mb-12 reveal">
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#e0c55d" }}>
+              E-Woman Conference 2026
+            </p>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-3">
+              A Powerful Gathering of Women
+            </h2>
+            <div className="gold-divider" />
+            <p className="text-white/80 text-base leading-relaxed mt-5 max-w-2xl mx-auto">
+              Hundreds of women gathered for inspiration, leadership, networking, and empowerment
+              at the E-Woman Conference 2026 — March 13–14 at the Hilton Hotel, Yaoundé.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+            {HIGHLIGHTS.map((item, i) => (
               <div
                 key={i}
-                className="reveal flex items-start gap-4 rounded-2xl p-6 shadow-sm"
+                className="reveal flex items-center gap-4 rounded-2xl p-5 shadow-sm"
                 style={{ animationDelay: `${i * 0.08}s`, background: "#ffffff" }}
               >
                 <div
@@ -190,18 +196,12 @@ const Index = () => {
                 >
                   {item.icon}
                 </div>
-                <p className="font-semibold pt-1.5" style={{ color: "#1a001f" }}>{item.text}</p>
+                <div className="flex items-center gap-2">
+                  <CheckCircle size={15} style={{ color: "#d4198a", flexShrink: 0 }} />
+                  <p className="font-semibold" style={{ color: "#1a001f" }}>{item.text}</p>
+                </div>
               </div>
             ))}
-          </div>
-          <div className="reveal reveal-delay-3 text-center mt-10">
-            <Link
-              to="/register"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white text-base"
-              style={{ backgroundColor: "#d4198a", boxShadow: "0 6px 24px rgba(212,25,138,0.35)" }}
-            >
-              Secure Your Seat — 50,000 FCFA <ArrowRight size={18} />
-            </Link>
           </div>
         </div>
       </section>
@@ -415,10 +415,10 @@ const Index = () => {
         <div className="container px-4">
           <div className="text-center mb-12 reveal">
             <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#e0c55d" }}>
-              Conference History
+              Conference Moments
             </p>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-3">
-              Highlights From Previous E-Woman Conferences
+              Moments From E-Woman Conferences
             </h2>
             <div className="gold-divider" />
           </div>
@@ -482,6 +482,94 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ── THANK YOU SECTION ────────────────────────────────────────────────── */}
+      <section
+        className="py-20"
+        style={{ background: "linear-gradient(135deg, #d4198a 0%, #9b0e61 100%)" }}
+      >
+        <div className="container px-4">
+          <div className="max-w-3xl mx-auto text-center space-y-6 reveal">
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold" style={{ color: "#fce9f5" }}>
+              With Gratitude
+            </p>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+              Thank You For Being Part of E-Woman
+            </h2>
+            <div className="gold-divider" />
+            <p className="text-white/90 text-lg leading-relaxed">
+              We thank all attendees, speakers, partners, sponsors, and volunteers
+              who made this conference a success.
+            </p>
+            <p className="text-white/80 text-base leading-relaxed">
+              Your presence, energy, and commitment made E-Woman Conference 2026 truly unforgettable.
+              Together we created something powerful — a room full of women rising in identity, leadership, and purpose.
+            </p>
+            <div className="pt-2">
+              <Link
+                to="/evaluation"
+                className="reveal inline-flex items-center justify-center gap-2 bg-white px-8 py-4 rounded-full font-bold text-base shadow-lg transition-all duration-200 hover:scale-105"
+                style={{ color: "#d4198a" }}
+              >
+                <ClipboardList size={18} />
+                Fill Evaluation Form
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── NEXT EDITION TEASER ──────────────────────────────────────────────── */}
+      <section
+        className="py-20 relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg, #1a001f 0%, hsl(329,70%,10%) 100%)" }}
+      >
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,25,138,0.15) 0%, transparent 70%)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="container px-4 relative z-10">
+          <div className="max-w-2xl mx-auto text-center space-y-6 reveal">
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest"
+              style={{ background: "rgba(212,25,138,0.15)", color: "#ff33aa", border: "1px solid rgba(212,25,138,0.3)" }}
+            >
+              <CalendarCheck size={14} />
+              Coming Soon
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+              Next Edition Coming Soon
+            </h2>
+            <div className="gold-divider" />
+            <p className="text-white/80 text-base leading-relaxed">
+              Preparation for the next E-Woman Conference has already started.
+              Stay connected for announcements about dates, speakers, and registration.
+            </p>
+            <p className="font-display text-lg font-semibold italic" style={{ color: "#e0c55d" }}>
+              Empower · Elevate · Excel
+            </p>
+            <div className="flex flex-wrap justify-center gap-3 pt-2">
+              <a
+                href="https://wa.me/237683493220"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-full font-semibold text-sm shadow hover:bg-[#1ebe5d] transition"
+              >
+                Stay Connected via WhatsApp
+              </a>
+              <Link
+                to="/gallery"
+                className="inline-flex items-center gap-2 border border-white/20 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-white/10 transition"
+              >
+                View Gallery <ArrowRight size={15} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA — Parts 4 & 5 ────────────────────────────────────────────────── */}
       <section className="py-24 gradient-dark">
         <div className="container px-4 text-center max-w-2xl mx-auto">
@@ -534,9 +622,6 @@ const Index = () => {
           </p>
         </div>
       </section>
-
-      {/* ── REGISTRATION ACTIVITY NOTIFICATION ──────────────────────────────── */}
-      <RegistrationActivity />
 
       {/* MOBILE STICKY EVALUATION */}
       <div className="fixed bottom-0 left-0 right-0 md:hidden bg-black/90 backdrop-blur-md border-t border-white/10 p-4 z-50">
