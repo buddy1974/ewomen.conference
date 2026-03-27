@@ -173,11 +173,15 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <ul className="space-y-3">
                 {[
                   { label: "Home", href: "/" },
+                  { label: "About", href: "/about" },
+                  { label: "The Conference", href: "/conference" },
+                  { label: "2026 Edition", href: "/2026-edition" },
                   { label: "Speakers", href: "/speakers" },
                   { label: "Schedule", href: "/schedule" },
                   { label: "Gallery", href: "/gallery" },
                   { label: "Media", href: "/media" },
-                  { label: "Register", href: "/register" },
+                  { label: "Testimonials", href: "/testimonials" },
+                  { label: "Contact", href: "/contact" },
                   { label: "Conference Evaluation", href: "/evaluation" },
                 ].map((link) => (
                   <li key={link.href}>

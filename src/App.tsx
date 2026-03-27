@@ -20,6 +20,11 @@ import PaymentSuccess from "./pages/PaymentSuccess";
 import Evaluation from "./pages/Evaluation";
 import EvaluationQR from "./pages/EvaluationQR";
 import NotFound from "./pages/NotFound";
+import About from "./pages/About";
+import Conference from "./pages/Conference";
+import Edition2026 from "./pages/Edition2026";
+import Testimonials from "./pages/Testimonials";
+import Contact from "./pages/Contact";
 
 // Heavy event-operations pages — lazy-loaded to keep main bundle small
 const CheckIn = lazy(() => import("./pages/CheckIn"));
@@ -54,6 +59,11 @@ const App = () => (
               <Route path="/checkin" element={<CheckIn />} />
               <Route path="/ticket/:reference" element={<Ticket />} />
               <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/conference" element={<Conference />} />
+              <Route path="/2026-edition" element={<Edition2026 />} />
+              <Route path="/testimonials" element={<Testimonials />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             </Suspense>
