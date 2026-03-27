@@ -120,21 +120,53 @@ const Media = () => {
           </div>
         </section>
 
-        {/* Media Coverage */}
+        {/* Video Gallery */}
         <section className="reveal">
-          <h2 className="font-display text-2xl font-bold mb-4 text-white">Media Coverage</h2>
+          <p className="text-xs uppercase tracking-[0.25em] mb-3" style={{ color: "#e0c55d" }}>
+            Conference Videos
+          </p>
+          <h2 className="font-display text-2xl font-bold mb-2" style={{ color: "#f8e8f4" }}>
+            E-Woman Conference 2026 — Highlights
+          </h2>
           <div className="gold-divider mx-0 mb-6" style={{ margin: 0 }} />
-          <div
-            className="rounded-2xl p-8 text-center border border-[#e0c55d]/20"
-            style={{ background: "linear-gradient(135deg, rgba(224,197,93,0.05), rgba(168,126,2,0.03))" }}
-          >
-            <p className="text-xs uppercase tracking-widest mb-3" style={{ color: "#e0c55d" }}>
-              Coming Soon
-            </p>
-            <p className="text-white leading-relaxed max-w-lg mx-auto">
-              Media coverage, press features, and broadcast links for E-Woman 2026 will be listed here
-              following the conference. Check back after March 14, 2026.
-            </p>
+          <p className="text-white/80 text-base leading-relaxed mb-8">
+            Relive the powerful moments from E-Woman Conference 2026. These short videos capture the energy,
+            worship, and transformation that took place over two incredible days.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[
+              "Ns0AI7IN6YA",
+              "xtpgB6gxJgo",
+              "wKpD4lWqAAU",
+              "BedXwqwsZbM",
+              "MgqIGusls3w",
+              "2XP0vviYUkg",
+              "bw4nWLAs2CY",
+              "jH5H0auX9u8",
+              "GMYwILN1-7M",
+              "ZlJD_0ljufM",
+              "zfKVe1m9Jww",
+              "jwlICGQ6wZI",
+              "_MoTaT3Yl5k",
+              "sVfHGI24i1w",
+              "vXAooeQ0UX4",
+              "7NIYcQ3qlKI",
+            ].map((id) => (
+              <div
+                key={id}
+                className="rounded-xl overflow-hidden border border-white/10"
+                style={{ aspectRatio: "9/16", background: "#0f0014" }}
+              >
+                <iframe
+                  src={`https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`}
+                  title={`E-Woman Conference 2026 — ${id}`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                  style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+                />
+              </div>
+            ))}
           </div>
         </section>
 

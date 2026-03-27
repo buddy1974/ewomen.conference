@@ -64,8 +64,87 @@ const Index = () => {
         className="text-center text-sm font-semibold px-4 py-3"
         style={{ background: "#e0c55d", color: "#1a001f" }}
       >
-        Thank you to all participants, speakers, partners & volunteers. Stay connected for the next edition.
+        Thank you to all participants, speakers, partners &amp; volunteers. Stay connected for the next edition.
       </div>
+
+      {/* ── CONFERENCE HERO STATEMENT ────────────────────────────────────────── */}
+      <section
+        className="py-24 relative overflow-hidden"
+        style={{ background: "linear-gradient(160deg, #12000f 0%, #220133 50%, #12000f 100%)" }}
+      >
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212,25,138,0.18) 0%, transparent 65%)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="container px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center space-y-5">
+            <span
+              className="inline-block text-xs font-bold uppercase tracking-[0.3em] px-4 py-1.5 rounded-full"
+              style={{ background: "rgba(224,197,93,0.12)", color: "#e0c55d", border: "1px solid rgba(224,197,93,0.25)" }}
+            >
+              March 13–14, 2026 · Hilton Hotel, Yaoundé
+            </span>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.08] tracking-tight">
+              E-Woman Conference 2026
+              <span className="block text-2xl sm:text-3xl md:text-4xl mt-2 font-semibold" style={{ color: "#ff77c2" }}>
+                A Powerful Gathering of Women
+              </span>
+            </h2>
+            <div className="gold-divider" />
+            <p className="text-white/85 text-lg leading-relaxed max-w-2xl mx-auto">
+              Thank you to all participants, speakers, partners, and volunteers
+              who made this event powerful.
+            </p>
+            <p className="text-white/65 text-base">
+              Stay connected for the next edition.
+            </p>
+            {/* Stats bar */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 max-w-3xl mx-auto">
+              {[
+                { number: "500+", label: "Women Impacted" },
+                { number: "12+",  label: "Speakers" },
+                { number: "2",    label: "Days" },
+                { number: "2",    label: "Continents" },
+              ].map((s) => (
+                <div
+                  key={s.label}
+                  className="rounded-2xl py-5 px-3 text-center"
+                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
+                >
+                  <div className="font-display text-3xl font-bold mb-1" style={{ color: "#d4198a" }}>{s.number}</div>
+                  <div className="text-xs font-medium text-white/60 uppercase tracking-wider">{s.label}</div>
+                </div>
+              ))}
+            </div>
+            {/* CTAs */}
+            <div className="flex flex-wrap justify-center gap-3 pt-4">
+              <Link
+                to="/gallery"
+                className="inline-flex items-center gap-2 font-semibold text-sm px-7 py-3 rounded-full shadow-lg hover:scale-105 transition-all"
+                style={{ background: "#d4198a", color: "#fff" }}
+              >
+                View Gallery <ArrowRight size={15} />
+              </Link>
+              <Link
+                to="/media"
+                className="inline-flex items-center gap-2 border border-white/30 text-white font-semibold text-sm px-7 py-3 rounded-full hover:bg-white/10 transition"
+              >
+                Watch Videos <ArrowRight size={15} />
+              </Link>
+              <Link
+                to="/evaluation"
+                className="inline-flex items-center gap-2 border border-white/30 text-white font-semibold text-sm px-7 py-3 rounded-full hover:bg-white/10 transition"
+              >
+                <ClipboardList size={15} />
+                Evaluation
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* TRUST STRIP */}
       <section className="py-10 bg-background border-y border-white/10 reveal">
@@ -105,6 +184,64 @@ const Index = () => {
               From entrepreneurs to ministry leaders, from young professionals to seasoned executives, E-Woman continues
               to shape women who are ready to build legacy.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── VIDEO HIGHLIGHTS PREVIEW ─────────────────────────────────────────── */}
+      <section
+        className="py-20 relative overflow-hidden"
+        style={{ background: "linear-gradient(160deg, #0e0012 0%, #1a0025 100%)" }}
+      >
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 60% 40% at 80% 50%, rgba(212,25,138,0.10) 0%, transparent 70%)" }}
+          aria-hidden="true"
+        />
+        <div className="container px-4 relative z-10">
+          <div className="text-center mb-12 reveal">
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#e0c55d" }}>
+              Watch the Moments
+            </p>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-3">
+              Video Highlights
+            </h2>
+            <div className="gold-divider" />
+            <p className="text-white/70 text-base mt-4 max-w-xl mx-auto">
+              Captured moments from E-Woman Conference 2026. Watch the energy, worship, and transformation.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto mb-10">
+            {["Ns0AI7IN6YA", "xtpgB6gxJgo", "wKpD4lWqAAU", "BedXwqwsZbM"].map((id, i) => (
+              <div
+                key={id}
+                className="reveal rounded-xl overflow-hidden"
+                style={{
+                  animationDelay: `${i * 0.08}s`,
+                  aspectRatio: "9/16",
+                  background: "#0f0014",
+                  border: "1px solid rgba(212,25,138,0.2)",
+                }}
+              >
+                <iframe
+                  src={`https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`}
+                  title={`E-Woman 2026 highlight ${i + 1}`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                  style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="text-center reveal">
+            <Link
+              to="/media"
+              className="inline-flex items-center gap-2 font-semibold text-sm px-8 py-3 rounded-full transition-all hover:scale-105"
+              style={{ background: "#d4198a", color: "#fff" }}
+            >
+              View All Videos <ArrowRight size={15} />
+            </Link>
           </div>
         </div>
       </section>
@@ -167,41 +304,51 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── SUCCESS HIGHLIGHTS ───────────────────────────────────────────────── */}
+      {/* ── CONFERENCE HIGHLIGHTS ────────────────────────────────────────────── */}
       <section className="py-20 bg-background">
         <div className="container px-4">
-          <div className="text-center mb-12 reveal">
+          <div className="text-center mb-14 reveal">
             <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#e0c55d" }}>
-              E-Woman Conference 2026
+              What Happened
             </p>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-3">
-              A Powerful Gathering of Women
+              Conference Highlights
             </h2>
             <div className="gold-divider" />
-            <p className="text-white/80 text-base leading-relaxed mt-5 max-w-2xl mx-auto">
-              Hundreds of women gathered for inspiration, leadership, networking, and empowerment
-              at the E-Woman Conference 2026 — March 13–14 at the Hilton Hotel, Yaoundé.
+            <p className="text-white/70 text-base leading-relaxed mt-5 max-w-2xl mx-auto">
+              Hundreds of women gathered for two days of inspiration, leadership, and empowerment
+              at the Hilton Hotel, Yaoundé — March 13–14, 2026.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
-            {HIGHLIGHTS.map((item, i) => (
-              <div
-                key={i}
-                className="reveal flex items-center gap-4 rounded-2xl p-5 shadow-sm"
-                style={{ animationDelay: `${i * 0.08}s`, background: "#ffffff" }}
-              >
+          <div className="max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                "Inspiring speakers",
+                "Leadership sessions",
+                "Networking moments",
+                "Worship & ministry",
+                "Awards & recognition",
+                "Powerful testimonies",
+              ].map((item, i) => (
                 <div
-                  className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg, #d4198a, #ff33aa)", color: "#fff" }}
+                  key={i}
+                  className="reveal flex items-center gap-4 rounded-xl px-5 py-4"
+                  style={{
+                    animationDelay: `${i * 0.07}s`,
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(212,25,138,0.15)",
+                  }}
                 >
-                  {item.icon}
+                  <div
+                    className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center"
+                    style={{ background: "linear-gradient(135deg, #d4198a, #ff33aa)" }}
+                  >
+                    <CheckCircle size={14} color="#fff" />
+                  </div>
+                  <p className="font-semibold text-white text-sm tracking-wide">{item}</p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle size={15} style={{ color: "#d4198a", flexShrink: 0 }} />
-                  <p className="font-semibold" style={{ color: "#1a001f" }}>{item.text}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -415,7 +562,7 @@ const Index = () => {
         <div className="container px-4">
           <div className="text-center mb-12 reveal">
             <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#e0c55d" }}>
-              Conference Moments
+              Photo Highlights
             </p>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-3">
               Moments From E-Woman Conferences
@@ -566,6 +713,49 @@ const Index = () => {
                 View Gallery <ArrowRight size={15} />
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SPONSORS & PARTNERS ──────────────────────────────────────────────── */}
+      <section className="py-20 bg-background border-t border-white/5">
+        <div className="container px-4">
+          <div className="text-center mb-12 reveal">
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#e0c55d" }}>
+              Who Made It Possible
+            </p>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-3">
+              Sponsors &amp; Partners
+            </h2>
+            <div className="gold-divider" />
+            <p className="text-white/60 text-sm mt-4 max-w-xl mx-auto">
+              We thank our sponsors and partners who supported E-Woman Conference 2026.
+              Interested in partnering for the next edition?{" "}
+              <a
+                href="mailto:info@e-womanconference.online"
+                className="underline underline-offset-2 hover:text-white transition"
+                style={{ color: "#ff77c2" }}
+              >
+                Contact us
+              </a>
+              .
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 max-w-4xl mx-auto">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div
+                key={i}
+                className="reveal rounded-xl flex items-center justify-center"
+                style={{
+                  animationDelay: `${i * 0.07}s`,
+                  height: 80,
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px dashed rgba(255,255,255,0.12)",
+                }}
+              >
+                <span className="text-xs text-white/25 font-medium uppercase tracking-widest">Partner</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

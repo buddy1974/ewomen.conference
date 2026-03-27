@@ -111,11 +111,13 @@ const Gallery = () => (
 
     {/* Description */}
     <section className="py-10 gradient-dark border-t border-white/10">
-      <div className="container px-4 max-w-3xl mx-auto text-center">
+      <div className="container px-4 max-w-3xl mx-auto text-center space-y-3">
+        <p className="text-white/90 text-base leading-relaxed font-medium">
+          Photos and videos from E-Woman Conference 2026.
+        </p>
         <p className="text-white/75 text-base leading-relaxed">
-          These images are from the 2025 edition of the E-Woman Conference.
-          Each year the movement gathers women for leadership, empowerment, and spiritual alignment.
-          This gallery preserves moments from previous editions as we prepare for the upcoming conference.
+          Thank you for being part of this powerful event.
+          Stay connected for the next edition.
         </p>
       </div>
     </section>
