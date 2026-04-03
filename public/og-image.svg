@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <!-- Dark purple background gradient -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12000f"/>
+      <stop offset="50%" stop-color="#220133"/>
+      <stop offset="100%" stop-color="#12000f"/>
+    </linearGradient>
+    <!-- Magenta radial glow -->
+    <radialGradient id="glow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#d4198a" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#12000f" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Gold accent line gradient -->
+    <linearGradient id="goldLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e0c55d" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#e0c55d" stop-opacity="1"/>
+      <stop offset="80%" stop-color="#e0c55d" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#e0c55d" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Glow overlay -->
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Decorative corner accents -->
+  <rect x="60" y="60" width="60" height="3" fill="#d4198a" opacity="0.7"/>
+  <rect x="60" y="60" width="3" height="60" fill="#d4198a" opacity="0.7"/>
+  <rect x="1080" y="60" width="60" height="3" fill="#d4198a" opacity="0.7"/>
+  <rect x="1137" y="60" width="3" height="60" fill="#d4198a" opacity="0.7"/>
+  <rect x="60" y="567" width="60" height="3" fill="#d4198a" opacity="0.7"/>
+  <rect x="60" y="510" width="3" height="60" fill="#d4198a" opacity="0.7"/>
+  <rect x="1080" y="567" width="60" height="3" fill="#d4198a" opacity="0.7"/>
+  <rect x="1137" y="510" width="3" height="60" fill="#d4198a" opacity="0.7"/>
+
+  <!-- Top badge -->
+  <rect x="500" y="100" width="200" height="28" rx="14" fill="#d4198a" opacity="0.15"/>
+  <rect x="500" y="100" width="200" height="28" rx="14" fill="none" stroke="#d4198a" stroke-width="1" opacity="0.4"/>
+  <text x="600" y="119" font-family="Georgia, serif" font-size="11" fill="#ff77c2" text-anchor="middle" letter-spacing="3" font-weight="600">CAMEROON · AFRICA</text>
+
+  <!-- Main title -->
+  <text x="600" y="245" font-family="Georgia, 'Times New Roman', serif" font-size="78" fill="#ffffff" text-anchor="middle" font-weight="700" letter-spacing="-1">E-Woman Conference</text>
+
+  <!-- Gold divider line -->
+  <rect x="340" y="272" width="520" height="2" fill="url(#goldLine)"/>
+
+  <!-- Subtitle -->
+  <text x="600" y="330" font-family="Georgia, serif" font-size="32" fill="#ff77c2" text-anchor="middle" font-style="italic" font-weight="400">Faith. Empowerment. Transformation.</text>
+
+  <!-- Secondary divider -->
+  <rect x="460" y="360" width="280" height="1" fill="#e0c55d" opacity="0.3"/>
+
+  <!-- Organizer line -->
+  <text x="600" y="410" font-family="Arial, sans-serif" font-size="18" fill="#e0c55d" text-anchor="middle" letter-spacing="1" font-weight="400">Rev. Delphine Nforgwei · DRIMP Foundation</text>
+
+  <!-- Bottom bar background -->
+  <rect x="0" y="540" width="1200" height="90" fill="#d4198a" opacity="0.12"/>
+  <rect x="0" y="540" width="1200" height="1" fill="#d4198a" opacity="0.4"/>
+
+  <!-- Bottom text: location + URL -->
+  <text x="600" y="590" font-family="Arial, sans-serif" font-size="20" fill="#ffffff" text-anchor="middle" opacity="0.9" letter-spacing="2" font-weight="600">Yaoundé, Cameroon  ·  e-womanconference.online</text>
+</svg>
