@@ -9,7 +9,13 @@
       "Bash(npm run deploy:*)",
       "Bash(npx wrangler@latest deploy)",
       "Bash(npx wrangler@latest r2 object list:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(python3 -c \":*)",
+      "Bash(node -e \":*)",
+      "Bash(vercel --prod)",
+      "Bash(vercel --prod --yes)",
+      "Bash(echo \"EXIT_CODE: $?\")",
+      "Bash(npx tsc:*)"
     ]
   }
 }
